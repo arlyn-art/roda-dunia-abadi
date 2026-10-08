@@ -1,5 +1,5 @@
 <footer class="w-full text-white bg-black border-t border-gray-800">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+    <div class="sm:container w-full mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         
         <div class="flex flex-col space-y-6">
             <a href="/" class="flex items-center space-x-3">

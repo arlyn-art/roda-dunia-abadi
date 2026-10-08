@@ -25,6 +25,6 @@
     </main>
 
     @include('partials.footer')
-
+    <x-floating />
 </body>
 </html>
