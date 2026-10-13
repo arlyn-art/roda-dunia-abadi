@@ -4,6 +4,10 @@
     <x-hero />
     <x-about />
     <x-services />
-    <x-projects />
+    <x-featured-projects :featuredProjects="$featuredProjects" />
+    <x-projects :homeProjects="$homeProjects" />
+    <x-trusted />
+    <x-news />
+    <x-partners />
     <x-ready />
 @endsection

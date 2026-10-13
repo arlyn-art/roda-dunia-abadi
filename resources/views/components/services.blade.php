@@ -1,8 +1,7 @@
 <section id="services" class="md:py-20 py-12 px-6 bg-accent">
-    <div class="w-full md:container mx-auto">
+    <div class="w-full md:container mx-auto px-6 xl:px-12 2xl:px-0">
         
-        <!-- 1. Title Fade In -->
-        <div x-data="{ shown: false }" 
+\        <div x-data="{ shown: false }" 
              x-init="
                 const observer = new IntersectionObserver(([entry]) => {
                     if (entry.isIntersecting) {

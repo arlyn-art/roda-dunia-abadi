@@ -48,34 +48,49 @@
             </a>
 
             <div class="hidden md:flex font-bold tracking-wide w-full transition-all duration-300" :class="isScrolled ? 'container mx-auto lg:justify-end justify-start 2xl:text-lg xl:text-[1rem] lg:text-[0.75rem] md:text-[0.55rem] text-black' : 'justify-start xl:text-lg lg:text-[0.85rem] md:text-[0.55rem] text-white'">
-                <a href="/" class="relative sm:px-6 px-0 sm:py-4 py-0 font-black transition group">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-primary"></span>
+                
+                <!-- HOME -->
+                <a href="/" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ request()->is('/') ? 'font-black' : 'hover:bg-secondary-hover' }}">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ request()->is('/') ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
                     HOME
                 </a>
-                <a href="#about" class="relative sm:px-6 px-0 sm:py-4 py-0 transition hover:bg-secondary-hover group">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-transparent group-hover:bg-primary transition-colors"></span>
+
+                <!-- ABOUT US -->
+                <a href="/#about" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ request()->is('*about*') ? 'font-black' : 'hover:bg-secondary-hover' }}">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ request()->is('*about*') ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
                     ABOUT US
                 </a>
-                <a href="/services" class="relative sm:px-6 px-0 sm:py-4 py-0 transition hover:bg-secondary-hover group">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-transparent group-hover:bg-primary transition-colors"></span>
+
+                <!-- SERVICES -->
+                <a href="/#services" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ request()->is('*services*') ? 'font-black' : 'hover:bg-secondary-hover' }}">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ request()->is('*services*') ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
                     SERVICES
                 </a>
-                <a href="/projects" class="relative sm:px-6 px-0 sm:py-4 py-0 transition hover:bg-secondary-hover group">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-transparent group-hover:bg-primary transition-colors"></span>
+
+                <!-- PROJECTS (Aktif di halaman projects & detail projects) -->
+                <a href="/projects" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ request()->is('projects*') ? 'font-black' : 'hover:bg-secondary-hover' }}">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ request()->is('projects*') ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
                     PROJECTS
                 </a>
-                <a href="/partners" class="relative sm:px-6 px-0 sm:py-4 py-0 transition hover:bg-secondary-hover group">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-transparent group-hover:bg-primary transition-colors"></span>
+
+                <!-- PARTNERS -->
+                <a href="/partners" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ request()->is('partners*') ? 'font-black' : 'hover:bg-secondary-hover' }}">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ request()->is('partners*') ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
                     PARTNERS
                 </a>
-                <a href="/news" class="relative sm:px-6 px-0 sm:py-4 py-0 transition hover:bg-secondary-hover group">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-transparent group-hover:bg-primary transition-colors"></span>
+
+                <!-- NEWS -->
+                <a href="/news" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ request()->is('news*') ? 'font-black' : 'hover:bg-secondary-hover' }}">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ request()->is('news*') ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
                     NEWS
                 </a>
-                <a href="/contact" class="relative sm:px-6 px-0 sm:py-4 py-0 transition hover:bg-secondary-hover group">
-                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 bg-transparent group-hover:bg-primary transition-colors"></span>
+
+                <!-- CONTACT US -->
+                <a href="/contact" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ request()->is('contact*') ? 'font-black' : 'hover:bg-secondary-hover' }}">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ request()->is('contact*') ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
                     CONTACT US
                 </a>
+
             </div>
 
             <div class="flex items-center md:hidden py-3">
@@ -99,13 +114,13 @@
             class="md:hidden bg-white/80 border-t border-gray-700 px-4 pt-2 pb-6 space-y-1 font-bold text-base"
             style="display: none;"
         >
-            <a href="/" class="block px-4 py-3 rounded-lg bg-gray-800 text-white border-l-4 border-primary">HOME</a>
-            <a href="/about" class="block px-4 py-3 rounded-lg text-black hover:bg-secondary-hover transition">ABOUT US</a>
-            <a href="/services" class="block px-4 py-3 rounded-lg text-black hover:bg-secondary-hover transition">SERVICES</a>
-            <a href="/projects" class="block px-4 py-3 rounded-lg text-black hover:bg-secondary-hover transition">PROJECTS</a>
-            <a href="/partners" class="block px-4 py-3 rounded-lg text-black hover:bg-secondary-hover transition">PARTNERS</a>
-            <a href="/news" class="block px-4 py-3 rounded-lg text-black hover:bg-secondary-hover transition">NEWS</a>
-            <a href="/contact" class="block px-4 py-3 rounded-lg text-black hover:bg-secondary-hover transition">CONTACT US</a>
+            <a href="/" class="block px-4 py-3 rounded-lg {{ request()->is('/') ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">HOME</a>
+            <a href="/#about" class="block px-4 py-3 rounded-lg {{ request()->is('*about*') ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">ABOUT US</a>
+            <a href="/#services" class="block px-4 py-3 rounded-lg {{ request()->is('*services*') ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">SERVICES</a>
+            <a href="/projects" class="block px-4 py-3 rounded-lg {{ request()->is('projects*') ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">PROJECTS</a>
+            <a href="/partners" class="block px-4 py-3 rounded-lg {{ request()->is('partners*') ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">PARTNERS</a>
+            <a href="/news" class="block px-4 py-3 rounded-lg {{ request()->is('news*') ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">NEWS</a>
+            <a href="/contact" class="block px-4 py-3 rounded-lg {{ request()->is('contact*') ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">CONTACT US</a>
         </div>
     </nav>
 </div>

@@ -50,7 +50,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="absolute bottom-[-4rem] sm:bottom-[-7rem] left-1/2 transform -translate-x-1/2 z-20 w-[90%] max-w-6xl bg-primary text-white rounded-tl-4xl rounded-br-4xl shadow-2xl py-4 px-4 sm:px-12 sm:py-12 transition-all duration-1000 ease-out"
+    <div class="absolute bottom-[-3rem] sm:bottom-[-7rem] left-1/2 transform -translate-x-1/2 z-20 w-[90%] max-w-6xl bg-primary text-white rounded-tl-4xl rounded-br-4xl shadow-2xl py-4 px-4 sm:px-12 sm:py-12 transition-all duration-1000 ease-out"
          x-show="shown"
          x-transition:enter="transition ease-out duration-1000"
          x-transition:enter-start="opacity-0 translate-y-10"

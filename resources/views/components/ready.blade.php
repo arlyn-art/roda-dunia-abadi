@@ -17,12 +17,13 @@
         observer.observe($el);
      ">
 
-    <div class="mx-auto lg:container w-full px-6 lg:px-6">
+    <div class="mx-auto lg:container w-full px-6 xl:px-12 2xl:px-0">
 
-        <div class="relative min-h-[620px] lg:min-h-[700px]">
+        <!-- Menggunakan flex flex-col-reverse lg:block agar di mobile gambar berada di bawah teks -->
+        <div class="relative flex flex-col-reverse lg:block min-h-[620px] lg:min-h-[700px]">
             
-            <!-- GAMBAR ORANG: Animasi Fade In Biasa (Muncul dari transparan) -->
-            <div class="pointer-events-none relative z-20 mt-0 md:-mt-16 w-[100%] translate-x-[-7%] lg:absolute lg:bottom-0 right-0 lg:mt-0 lg:w-[100%] lg:max-w-[780px] lg:translate-x-0 transition-all duration-1000 ease-out"
+            <!-- GAMBAR ORANG: Tetap dengan absolute-nya untuk layar besar, dan otomatis di bawah saat mobile -->
+            <div class="pointer-events-none relative z-20 mt-8 md:mt-0 w-[100%] translate-x-0 lg:absolute lg:bottom-0 right-0 lg:w-[100%] lg:max-w-[780px] lg:translate-x-0 transition-all duration-1000 ease-out"
                  x-show="shown"
                  x-transition:enter="transition ease-out duration-1000"
                  x-transition:enter-start="opacity-0"
@@ -35,7 +36,7 @@
                 >
             </div>
 
-            <!-- BAGIAN TEKS: Animasi Fade In dari Kiri (Slide-in from left + Opacity) -->
+            <!-- BAGIAN TEKS: Animasi Fade In dari Kiri -->
             <div class="relative z-10 flex w-full items-center py-12 lg:min-h-[700px] lg:w-[46%] lg:py-24 transition-all duration-1000 ease-out"
                  x-show="shown"
                  x-transition:enter="transition ease-out duration-1000"
