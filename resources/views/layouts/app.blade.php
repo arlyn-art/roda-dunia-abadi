@@ -2,11 +2,22 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ isset($title) && $title ? $title . ' | ' : '' }}{{ config('app.name') }}</title>
+    <!-- Dynamic Meta Description -->
+    <meta name="description" content="{{ $meta['meta_description'] ?? '' }}">
 
-    {{-- icon --}}
-    <link rel="icon" type="image/png" href="/img/logo-red.png">
+    <!-- Dynamic Meta Keywords / Tags (jika meta_tag berupa array/string) -->
+    @if(!empty($meta['meta_tag']) && is_array($meta['meta_tag']))
+        <meta name="keywords" content="{{ implode(',', $meta['meta_tag']) }}">
+    @endif
+
+    <!-- Dynamic Title -->
+    <title>
+        @isset($meta['meta_title'])
+            {{ $meta['meta_title'] }} | {{ config('app.name') }}
+        @else
+            {{ isset($title) && $title ? $title . ' | ' : '' }}{{ config('app.name') }}
+        @endisset
+    </title>
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

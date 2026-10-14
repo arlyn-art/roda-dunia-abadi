@@ -8,9 +8,9 @@
     $lineClass = $lineColor === 'white' ? 'bg-white' : 'bg-primary';
 
     $sizeClasses = [
-        'h1' => 'text-lg sm:text-4xl md:text-5xl',
-        'h2' => 'text-lg sm:text-xl md:text-3xl',
-        'h3' => 'text-lg sm:text-xl md:text-2xl',
+        'h1' => 'text-xl sm:text-4xl md:text-5xl',
+        'h2' => 'text-xl sm:text-2xl md:text-3xl',
+        'h3' => 'text-xl sm:text-xl md:text-2xl',
     ];
 
     $tagSizeClass = $sizeClasses[$tag] ?? 'md:text-5xl text-2xl';

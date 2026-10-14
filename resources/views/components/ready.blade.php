@@ -36,7 +36,6 @@
                 >
             </div>
 
-            <!-- BAGIAN TEKS: Animasi Fade In dari Kiri -->
             <div class="relative z-10 flex w-full items-center py-12 lg:min-h-[700px] lg:w-[46%] lg:py-24 transition-all duration-1000 ease-out"
                  x-show="shown"
                  x-transition:enter="transition ease-out duration-1000"
@@ -45,13 +44,12 @@
                  style="display: none;">
                 
                 <div class="max-w-2xl">
-                    <h1 class="text-lg sm:text-4xl md:text-5xl font-normal leading-[1.05] tracking-tight text-white">
+                    <x-ui.title tag="h1" lineColor="none" textColor="text-white" class="leading-[1.05] tracking-tight">
                         Ready to Start
                         <br>
                         Your Project?
-                    </h1>
+                    </x-ui.title>
 
-                    {{-- Description --}}
                     <p class="mt-8 max-w-2xl text-sm leading-8 text-white md:text-lg">
                         Pastikan Lahan Anda direncanakan dengan tepat sejak awal.
                         Konsultasikan kebutuhan proyek Anda bersama PT Roda
@@ -67,7 +65,7 @@
                     <div class="mt-8">
                         <x-ui.button
                             variant="black"
-                            href="/"
+                            href="/contact"
                         >
                             FREE CONSULTATION
                         </x-ui.button>

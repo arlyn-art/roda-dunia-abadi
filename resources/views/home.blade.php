@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-hero />
-    <x-about />
-    <x-services />
+    <x-hero :heroSection="$heroSection" :supportSection="$supportSection" />
+    <x-about :aboutSection="$aboutSection" />
+    <x-services :serviceSection="$serviceSection" />
     <x-featured-projects :featuredProjects="$featuredProjects" />
     <x-projects :homeProjects="$homeProjects" />
     <x-trusted />
-    <x-news />
+    <x-news :homeNews="$homeNews" />
     <x-partners />
     <x-ready />
 @endsection

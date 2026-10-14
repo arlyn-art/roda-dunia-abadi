@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="w-full h-[35vh] overflow-hidden mb-12 bg-black/40">
+    <div class="w-full h-[35vh] overflow-hidden mb-12">
         <img src="{{ $news->thumbnail_url }}" 
             alt="{{ $news->title }}" 
             class="w-full h-auto object-cover">
     </div>
 
-    <div class="container mx-auto px-6 py-12 md:py-20">
+    <div class="w-full md:container mx-auto px-6 py-12 md:py-20">
         <div class="mb-12">
             <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
                 Article
@@ -16,18 +16,6 @@
         <div class="flex flex-col md:flex-row md:gap-12 lg:gap-16">
             <div class="md:w-2/5 lg:w-1/3 mb-12 md:mb-0">
                 <div class="md:sticky md:top-28">
-                    <div class="flex flex-wrap gap-2 mb-4 md:order-last md:mt-6">
-                        @if(!empty($news->meta_tag))
-                            @php
-                                $tags = explode(',', $news->meta_tag);
-                            @endphp
-                            @foreach($tags as $tag)
-                                <span class="bg-primary/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-                                    {{ trim($tag) }}
-                                </span>
-                            @endforeach
-                        @endif
-                    </div>
 
                     <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight mb-4 md:order-1">
                         {{ $news->title }}
@@ -39,6 +27,18 @@
                         <span>{{ \Carbon\Carbon::parse($news->date)->format('M d, Y') }}</span>
                     </div>
 
+                    <div class="flex flex-wrap gap-2 mb-t md:order-last md:mt-4">
+                        @if(!empty($news->meta_tag))
+                            @php
+                                $tags = explode(',', $news->meta_tag);
+                            @endphp
+                            @foreach($tags as $tag)
+                                <span class="bg-primary/90 text-white text-xs font-medium px-3 py-1 rounded-full">
+                                    {{ trim($tag) }}
+                                </span>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
 

@@ -16,7 +16,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            on: {
+                init: function () {
+                    playActiveSlideVideo(this);
+                },
+                slideChangeTransitionStart: function () {
+                    playActiveSlideVideo(this);
+                }
+            }
         });
+
+        function playActiveSlideVideo(swiperInstance) {
+            swiperInstance.autoplay.stop();
+
+            document.querySelectorAll('.hero-video').forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+                video.onended = null;
+            });
+
+            const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+            
+            if (activeSlide) {
+                const activeVideo = activeSlide.querySelector('.hero-video');
+
+                if (activeVideo) {
+                    activeVideo.muted = true;
+                    activeVideo.loop = false;
+                    activeVideo.onended = function () {
+                        if (swiperInstance.slides[swiperInstance.activeIndex] === activeSlide) {
+                            swiperInstance.slideNext();
+                        }
+                    };
+                    activeVideo.play().catch(error => {
+                        console.log("Autoplay ditolak browser:", error);
+                        swiperInstance.autoplay.start();
+                    });
+                } else {
+                    swiperInstance.autoplay.start();
+                }
+            } else {
+                swiperInstance.autoplay.start();
+            }
+        }
     }
 
     if (document.querySelector('.project-swiper')) {
@@ -37,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (document.querySelector('.trusted-swiper')) {
         new Swiper('.trusted-swiper', {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 24,
             loop: true,
             navigation: {
@@ -54,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (document.querySelector('.partners-swiper')) {
         new Swiper('.partners-swiper', {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 24,
             loop: true,
             navigation: {
@@ -79,6 +121,22 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             observer: true, 
             observeParents: true,
+        });
+    }
+
+    if (document.querySelector('.news-swiper')) {
+        new Swiper('.news-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            navigation: {
+                nextEl: '.news-swiper-next',
+                prevEl: '.news-swiper-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            },
         });
     }
 });
