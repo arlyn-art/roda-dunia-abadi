@@ -64,7 +64,7 @@
                     :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
                 >
                     <a href="{{ route('articles.show', $article->slug) }}" class="flex flex-col group cursor-pointer">
-                        <div class="w-full h-[160px] md:h-[320px] overflow-hidden mb-4 bg-black/40">
+                        <div class="w-full h-[120px] md:h-[320px] overflow-hidden mb-4 bg-black/40">
                             <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         </div>
                         

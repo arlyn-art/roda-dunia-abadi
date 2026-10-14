@@ -59,37 +59,64 @@
 
         </div>
         <div class="border-t border-gray-300 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div>
+            <div class="w-full sm:w-auto">
                 @if($previousArticle)
-                    <a href="{{ route('articles.show', $previousArticle->slug) }}" class="group relative inline-flex items-center gap-3 py-2 font-semibold text-black transition-all duration-300">
-                        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white opacity-0 -translate-x-3 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <a href="{{ route('articles.show', $previousArticle->slug) }}"
+                        class="group relative inline-flex items-center gap-3 py-2 font-semibold text-black transition-all duration-300">
+
+                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-white
+                            opacity-100 translate-x-0
+                            sm:opacity-0 sm:-translate-x-3
+                            sm:transition-all sm:duration-300 sm:ease-out
+                            sm:group-hover:translate-x-0 sm:group-hover:opacity-100">
+
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                             </svg>
                         </span>
-                        
-                        <span class="relative z-10 transition-transform duration-300 ease-out group-hover:translate-x-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full">
+
+                        <span class="relative z-10
+                            after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary
+                            sm:after:w-0 sm:after:transition-all sm:after:duration-300
+                            sm:group-hover:after:w-full
+                            sm:transition-transform sm:duration-300 sm:ease-out sm:group-hover:translate-x-1">
                             PREVIOUS ARTICLE
                         </span>
                     </a>
                 @endif
             </div>
 
-            <div>
+            <div class="w-full sm:w-auto flex justify-end">
                 @if($nextArticle)
-                    <a href="{{ route('articles.show', $nextArticle->slug) }}" class="group relative inline-flex items-center gap-3 py-2 font-semibold text-black transition-all duration-300">
-                        <span class="relative z-10 transition-transform duration-300 ease-out group-hover:-translate-x-1 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 group-hover:after:w-full">
+                    <a href="{{ route('articles.show', $nextArticle->slug) }}"
+                        class="group relative inline-flex items-center gap-3 py-2 font-semibold text-black transition-all duration-300">
+
+                        <span class="relative z-10
+                            after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary
+                            sm:after:w-0 sm:after:transition-all sm:after:duration-300
+                            sm:group-hover:after:w-full
+                            sm:transition-transform sm:duration-300 sm:ease-out sm:group-hover:-translate-x-1">
                             NEXT ARTICLE
                         </span>
 
-                        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white opacity-0 translate-x-3 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-white
+                            opacity-100 translate-x-0
+                            sm:opacity-0 sm:translate-x-3
+                            sm:transition-all sm:duration-300 sm:ease-out
+                            sm:group-hover:translate-x-0 sm:group-hover:opacity-100">
+
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                             </svg>
                         </span>
                     </a>
                 @endif
             </div>
+
         </div>
     </div>
 @endsection

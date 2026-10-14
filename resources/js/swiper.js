@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         new Swiper('.project-swiper', {
             slidesPerView: 1,
             spaceBetween: 24,
-            loop: true,
+            loop: false,
             navigation: {
                 nextEl: '.project-swiper-next',
                 prevEl: '.project-swiper-prev',
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         new Swiper('.news-swiper', {
             slidesPerView: 1,
             spaceBetween: 24,
-            loop: true,
+            loop: false,
             navigation: {
                 nextEl: '.news-swiper-next',
                 prevEl: '.news-swiper-prev',
