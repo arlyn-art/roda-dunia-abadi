@@ -20,11 +20,17 @@ class NewsController extends Controller
     }
 
     public function show($slug)
-    {
+    {   
         $news = News::where('slug', $slug)
             ->where('is_active', true)
             ->with('user')
             ->firstOrFail();
+
+        $meta = [
+            'meta_title' => $news->meta_title ?: $news->title,
+            'meta_description' => $news->meta_description ?: strip_tags($news->description ?? ''),
+            'meta_tag' => $news->meta_tag,
+        ];
 
         $previousArticle = News::where('is_active', true)
             ->where(function ($query) use ($news) {
@@ -50,6 +56,6 @@ class NewsController extends Controller
             ->orderBy('id', 'desc')
             ->first();
 
-        return view('details.detailNews', compact('news', 'previousArticle', 'nextArticle'));
+        return view('details.detailNews', compact('news', 'previousArticle', 'nextArticle', 'meta'));
     }
 }

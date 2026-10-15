@@ -17,6 +17,7 @@ class Project extends Model implements HasMedia
         'slug',
         'location',
         'years',
+        'end_year',
         'working',
         'partner',
         'description',

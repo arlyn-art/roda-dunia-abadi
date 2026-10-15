@@ -37,7 +37,6 @@
                             @php
                                 $project = $item->project;
                                 
-                                // Mengumpulkan gambar (Thumbnail + Galeri Spatie)
                                 $images = [];
                                 $thumbnail = $project->getFirstMediaUrl('thumbnail');
                                 $images[] = $thumbnail ?: asset('img/featured-projects/main-image.png');
@@ -69,7 +68,6 @@
                                         class="transition-all duration-700 ease-out"
                                         :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'"
                                     >
-                                        <!-- Area Gambar Utama & Galeri Thumbnail -->
                                         <div class="relative w-full h-[300px] md:h-[650px] rounded-xl overflow-hidden mb-8 bg-black/40">
                                             <template x-for="(img, index) in images" :key="index">
                                                 <img
@@ -80,7 +78,6 @@
                                                 >
                                             </template>
 
-                                            <!-- Thumbnail List di dalam gambar (jika galeri lebih dari 1) -->
                                             <template x-if="images.length > 1">
                                                 <div
                                                     class="absolute bottom-0 left-0 right-0 flex gap-3 z-10 overflow-x-auto p-2 bg-black/40 backdrop-blur-md rounded-b-xl [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
@@ -101,7 +98,6 @@
                                             </template>
                                         </div>
 
-                                        <!-- Informasi Detail Proyek -->
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
                                                 <h3 class="text-xl md:text-2xl font-bold text-white mb-1">
@@ -133,7 +129,7 @@
 
                                             <div class="text-white text-sm md:text-base space-y-4">
                                                 @if($project->description)
-                                                    <div class="prose prose-invert max-w-none text-white">
+                                                    <div class="prose prose-invert max-w-none text-white tiptap-content">
                                                         {!! $project->description !!}
                                                     </div>
                                                 @endif

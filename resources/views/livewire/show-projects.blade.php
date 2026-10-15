@@ -115,7 +115,12 @@
                         </div>
                         <div class="sm:px-6 px-0">
                             <h3 class="text-sm md:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->title }}</h3>
-                            <p class="text-black font-semibold text-sm">{{ $project->years }}</p>
+                            <h3 class="text-sm md:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->location }}</h3>
+                            @if($project->years)
+                                <p class="text-black font-semibold text-sm">
+                                    {{ $project->years }}{{ $project->end_year ? ' - ' . $project->end_year : '' }}
+                                </p>
+                            @endif
                         </div>
                     </a>
                 </div>

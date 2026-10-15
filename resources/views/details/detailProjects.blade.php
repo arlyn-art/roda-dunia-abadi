@@ -37,17 +37,20 @@
                     <h2 class="text-2xl md:text-3xl font-bold text-black mb-2">{{ $project->title }}</h2>
                     <p class="text-gray-600 font-medium text-lg">{{ $project->location }}</p>
                 </div>
+
                 @if($project->years)
-                <div>
-                    <span class="block text-xs font-bold tracking-wider text-primary uppercase mb-1">Tahun</span>
-                    <span class="text-xl font-bold text-black">{{ $project->years }}</span>
-                </div>
+                    <div>
+                        <span class="block text-xs font-bold tracking-wider text-primary uppercase mb-1">Tahun</span>
+                        <span class="text-xl font-bold text-black">
+                            {{ $project->years }}{{ $project->end_year ? ' - ' . $project->end_year : '' }}
+                        </span>
+                    </div>
                 @endif
 
                 @if($project->working)
                 <div>
                     <span class="block text-xs font-bold tracking-wider text-primary uppercase mb-2">Pekerjaan</span>
-                    <div class="prose prose-ul:list-disc prose-ol:list-decimal list-inside text-gray-700 text-sm md:text-base">
+                    <div class="prose prose-ul:list-disc prose-ol:list-decimal list-inside text-black font-semibold text-sm md:text-base">
                         {!! $project->working !!}
                     </div>
                 </div>
@@ -88,14 +91,15 @@
             </div>
         </div>
 
-        @if($project->description)
-        <div class="mb-16 border-t border-gray-200 pt-8">
-            <h3 class="text-2xl font-bold text-black mb-4">Tentang Proyek</h3>
-            <div class="prose max-w-none text-gray-700 tiptap-content">
-                {!! $project->description !!}
+        @if (trim(strip_tags($project->description ?? '')) !== '')
+            <div class="mb-16 border-t border-gray-200 pt-8">
+                <h3 class="text-2xl font-bold text-black mb-4">Tentang Proyek</h3>
+                <div class="prose max-w-none text-black tiptap-content">
+                    {!! $project->description !!}
+                </div>
             </div>
-        </div>
         @endif
+
 
         <div class="border-t border-gray-300 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="w-full sm:w-auto">

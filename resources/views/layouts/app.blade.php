@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,6 +7,7 @@
 
     <!-- Dynamic Meta Description -->
     <meta name="description" content="{{ $meta['meta_description'] ?? '' }}">
+    <meta name="title" content="{{$meta['meta_title'] ?? ''}}">
 
     <!-- Dynamic Meta Keywords / Tags (jika meta_tag berupa array/string) -->
     @if(!empty($meta['meta_tag']) && is_array($meta['meta_tag']))
@@ -28,11 +30,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-
+<body
+    @if (request()->routeIs('projects'))
+        data-disable-app-alpine
+    @endif
+>
     @include('partials.nav')
 
     <main class="flex-grow md:pt-0 pt-16">

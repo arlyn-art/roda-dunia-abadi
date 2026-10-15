@@ -20,8 +20,13 @@ class ProjectController extends Controller
     }
 
     public function show($slug)
-    {
+    {   
         $project = Project::where('slug', $slug)->firstOrFail();
+
+        $meta = [
+            'meta_title' => $project->title,
+            // 'meta_description' => strip_tags($project->description ?? ''),
+        ];
 
         $images = [];
         
@@ -41,6 +46,6 @@ class ProjectController extends Controller
         $previousProject = $currentIndex > 0 ? $projects[$currentIndex - 1] : null;
         $nextProject = $currentIndex < $projects->count() - 1 ? $projects[$currentIndex + 1] : null;
 
-        return view('details.detailProjects', compact('project', 'images', 'previousProject', 'nextProject'));
+        return view('details.detailProjects', compact('project', 'images', 'previousProject', 'nextProject', 'meta'));
     }
 }

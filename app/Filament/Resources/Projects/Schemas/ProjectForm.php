@@ -28,7 +28,25 @@ class ProjectForm
                 Forms\Components\TextInput::make('location')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('years')
-                    ->numeric(),
+                    ->label('Start Year')
+                    ->numeric()
+                    ->minValue(1900)
+                    ->maxValue(2100),
+
+                Forms\Components\TextInput::make('end_year')
+                    ->label('End Year (Optional)')
+                    ->numeric()
+                    ->minValue(1900)
+                    ->maxValue(2100)
+                    ->nullable()
+                    ->placeholder('Kosongkan jika proyek hanya satu tahun')
+                    ->rules([
+                            fn (\Filament\Schemas\Components\Utilities\Get $get): \Closure => function (string $attribute, $value, \Closure $fail) use ($get) {
+                            if (filled($value) && filled($get('years')) && (int) $value < (int) $get('years')) {
+                                $fail('End Year tidak boleh lebih kecil dari Start Year.');
+                            }
+                        },
+                    ]),
                 Forms\Components\RichEditor::make('working')
                     ->columnSpanFull()
                     ->toolbarButtons(['bold', 'italic', 'underline', 'strike', 'subscript', 'superscript', 'link',
