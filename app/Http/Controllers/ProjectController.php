@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function index()
+    {
+        $title = "Projects";
+        $projectSettings = Settings::where('group', 'projects')->get()->keyBy('name');
+        $meta = $projectSettings['Meta']->payload ?? [];
+        $hero = $projectSettings['Hero']->payload ?? [];
+        $heroMedia = $hero['hero_media'] ?? null;
+
+        return view('projects', compact('title', 'meta', 'heroMedia'));
+    }
+
     public function show($slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();

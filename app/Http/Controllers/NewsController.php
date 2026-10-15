@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -10,7 +11,12 @@ class NewsController extends Controller
     public function index()
     {
         $title = "News";
-        return view('news', compact('title'));
+        $newsSettings = Settings::where('group', 'news')->get()->keyBy('name');
+        $meta = $newsSettings['Meta']->payload ?? [];
+        $hero = $newsSettings['Hero']->payload ?? [];
+        $heroMedia = $hero['hero_media'] ?? null;
+
+        return view('news', compact('title', 'meta', 'heroMedia'));
     }
 
     public function show($slug)

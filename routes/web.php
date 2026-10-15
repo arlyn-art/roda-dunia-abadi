@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\ShowProjects;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/projects', function () { return view('projects');})->name('projects');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('articles.show');

@@ -217,6 +217,10 @@ class Settings extends Page
                 Tabs::make('SettingsTabs')
                     ->tabs([
                         $this->homeTab(),
+                        $this->projectsTab(),
+                        $this->partnersTab(),
+                        $this->newsTab(),
+                        $this->contactTab(),
                     ]),
             ]);
     }
@@ -384,7 +388,177 @@ class Settings extends Page
                                     ->itemLabel(fn () => 'Services Section'),
                             ])
                             ->statePath('home.services_section'),
+
+                        Tab::make('Ready section')
+                            ->schema([
+                                Textarea::make('ready_title')
+                                    ->label('Ready Title')
+                                    ->maxLength(255),
+
+                                RichEditor::make('ready_description')
+                                    ->label('Ready Description')
+                                    ->columnSpanFull(),
+
+                                TextInput::make('ready_footer')
+                                    ->label('Ready Footer')
+                                    ->maxLength(255),
+
+                                FileUpload::make('ready_media')
+                                    ->label('Ready Media (Foto)')
+                                    ->acceptedFileTypes(['image/*'])
+                                    ->directory('home/ready')
+                                    ->disk('public')
+                                    ->multiple(false)
+                                    ->helperText('Mendukung file gambar (Max: 10MB)')
+                                    ->imagePreviewHeight('200')
+                                    ->dehydrateStateUsing(fn ($state) =>
+                                        is_array($state) ? array_values($state)[0] ?? null : $state
+                                    ),
+                            ])
+                            ->statePath('home.ready_section'),
                     ]),
+                
             ]);
     }
+
+    protected function projectsTab(): Tab {
+        return Tab::make('Projects')
+            ->schema([
+                Tabs::make('ProjectsSubTabs')
+                    ->tabs([
+                        Tab::make('Meta Tag')
+                            ->schema([
+                                TextInput::make('projects.meta.meta_title')
+                                    ->label('Meta Title')
+                                    ->maxLength(255),
+                                Textarea::make('projects.meta.meta_description')
+                                    ->label('Meta Description'),
+                                TagsInput::make('projects.meta.meta_tag')
+                                    ->label('Meta Tag'),
+                            ]),
+                        Tab::make('Hero')
+                            ->schema([
+                                FileUpload::make('hero_media')
+                                    ->label('Hero Media (Foto)')
+                                    ->acceptedFileTypes(['image/*'])
+                                    ->directory('projects/hero')
+                                    ->disk('public')
+                                    ->multiple(false)
+                                    ->helperText('Mendukung file gambar (Max: 10MB)')
+                                    ->imagePreviewHeight('200')
+                                    ->dehydrateStateUsing(fn ($state) =>
+                                        is_array($state) ? array_values($state)[0] ?? null : $state
+                                    ),
+                            ])
+                            ->statePath('projects.hero'),
+                    ]),
+                
+            ]);
+    }
+
+    protected function partnersTab(): Tab {
+        return Tab::make('Partners')
+            ->schema([
+                Tabs::make('partnersSubTabs')
+                    ->tabs([
+                        Tab::make('Meta Tag')
+                            ->schema([
+                                TextInput::make('partners.meta.meta_title')
+                                    ->label('Meta Title')
+                                    ->maxLength(255),
+                                Textarea::make('partners.meta.meta_description')
+                                    ->label('Meta Description'),
+                                TagsInput::make('partners.meta.meta_tag')
+                                    ->label('Meta Tag'),
+                            ]),
+                        Tab::make('Hero')
+                            ->schema([
+                                FileUpload::make('hero_media')
+                                    ->label('Hero Media (Foto)')
+                                    ->acceptedFileTypes(['image/*'])
+                                    ->directory('partners/hero')
+                                    ->disk('public')
+                                    ->multiple(false)
+                                    ->helperText('Mendukung file gambar (Max: 10MB)')
+                                    ->imagePreviewHeight('200')
+                                    ->dehydrateStateUsing(fn ($state) =>
+                                        is_array($state) ? array_values($state)[0] ?? null : $state
+                                    ),
+                            ])
+                            ->statePath('partners.hero'),
+                    ]),
+                
+            ]);
+    }
+
+    protected function newsTab(): Tab {
+        return Tab::make('News')
+            ->schema([
+                Tabs::make('newsSubTabs')
+                    ->tabs([
+                        Tab::make('Meta Tag')
+                            ->schema([
+                                TextInput::make('news.meta.meta_title')
+                                    ->label('Meta Title')
+                                    ->maxLength(255),
+                                Textarea::make('news.meta.meta_description')
+                                    ->label('Meta Description'),
+                                TagsInput::make('news.meta.meta_tag')
+                                    ->label('Meta Tag'),
+                            ]),
+                        Tab::make('Hero')
+                            ->schema([
+                                FileUpload::make('hero_media')
+                                    ->label('Hero Media (Foto)')
+                                    ->acceptedFileTypes(['image/*'])
+                                    ->directory('news/hero')
+                                    ->disk('public')
+                                    ->multiple(false)
+                                    ->helperText('Mendukung file gambar (Max: 10MB)')
+                                    ->imagePreviewHeight('200')
+                                    ->dehydrateStateUsing(fn ($state) =>
+                                        is_array($state) ? array_values($state)[0] ?? null : $state
+                                    ),
+                            ])
+                            ->statePath('news.hero'),
+                    ]),
+                
+            ]);
+    }
+
+    protected function contactTab(): Tab {
+        return Tab::make('Contact')
+            ->schema([
+                Tabs::make('contactSubTabs')
+                    ->tabs([
+                        Tab::make('Meta Tag')
+                            ->schema([
+                                TextInput::make('contact.meta.meta_title')
+                                    ->label('Meta Title')
+                                    ->maxLength(255),
+                                Textarea::make('contact.meta.meta_description')
+                                    ->label('Meta Description'),
+                                TagsInput::make('contact.meta.meta_tag')
+                                    ->label('Meta Tag'),
+                            ]),
+                        Tab::make('Hero')
+                            ->schema([
+                                FileUpload::make('hero_media')
+                                    ->label('Hero Media (Foto)')
+                                    ->acceptedFileTypes(['image/*'])
+                                    ->directory('contact/hero')
+                                    ->disk('public')
+                                    ->multiple(false)
+                                    ->helperText('Mendukung file gambar (Max: 10MB)')
+                                    ->imagePreviewHeight('200')
+                                    ->dehydrateStateUsing(fn ($state) =>
+                                        is_array($state) ? array_values($state)[0] ?? null : $state
+                                    ),
+                            ])
+                            ->statePath('contact.hero'),
+                    ]),
+                
+            ]);
+    }
+
 }

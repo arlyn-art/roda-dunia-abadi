@@ -24,8 +24,14 @@ class Project extends Model implements HasMedia
 
     protected static function booted()
     {
-        static::saving(function ($project) {
-            if (empty($project->slug) || $project->isDirty('title')) {
+        static::creating(function ($project) {
+            if (empty($project->slug)) {
+                $project->slug = Str::slug($project->title);
+            }
+        });
+
+        static::updating(function ($project) {
+            if ($project->isDirty('title')) {
                 $project->slug = Str::slug($project->title);
             }
         });

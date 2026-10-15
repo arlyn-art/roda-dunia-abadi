@@ -42,7 +42,7 @@
 
                             @if($news)
                                 <article class="swiper-slide overflow-hidden md:bg-none bg-white md:rounded-none rounded-xl md:px-6 px-6 md:py-0 py-6 flex flex-col h-auto">
-                                    <img src="{{ $news->thumbnail_url }}" alt="{{ $news->title }}" class="mt-4 h-56 w-full object-cover rounded-lg">
+                                    <img src="{{ $news->thumbnail_url }}" alt="{{ $news->title }}" class="mt-4 h-56 w-full object-cover">
                                     
                                     <div class="flex flex-col items-start pt-4 flex-grow">
                                         <h3 class="text-xl font-bold text-black">{{ $news->title }}</h3>

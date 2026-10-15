@@ -26,6 +26,12 @@ class News extends Model implements HasMedia
         'meta_tag',
     ];
 
+    protected $casts = [
+        'meta_tag' => 'array',
+        'date' => 'date',
+        'is_active' => 'boolean',
+    ];
+
     protected static function boot()
     {
         parent::boot();

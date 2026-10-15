@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\News\Schemas;
 
+use App\Models\News;
 use Filament\Forms;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Grid;
@@ -27,10 +28,12 @@ class NewsForm
                                 )
                             ),
 
-                        // Forms\Components\TextInput::make('slug')
-                        //     ->required()
-                        //     ->maxLength(255)
-                        //     ->unique('news', 'slug', ignoreRecord: true),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(255)
+                            ->readOnly() 
+                            ->dehydrated() 
+                            ->unique(News::class, 'slug', ignoreRecord: true),
 
                         Forms\Components\Select::make('user_id')
                             ->relationship('user', 'name')

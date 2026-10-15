@@ -3,14 +3,26 @@
 @section('content')
 <div class="w-full h-[35vh] overflow-hidden mb-12 bg-black/40">
     <img src="{{ $project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/main-image.png') }}" 
-            alt="{{ $project->title }}" 
-            class="w-full h-full object-cover">
+         alt="{{ $project->title }}" 
+         class="w-full h-full object-cover">
 </div>
-<div class="md:py-20 py-12 px-6 bg-white text-black" 
-     x-data="{ 
-         activeImage: 0, 
-         images: @js($images) 
-     }">
+
+<div 
+    x-data="{ 
+        activeImage: 0, 
+        images: @js($images),
+        shown: false,
+        init() {
+            const observer = new IntersectionObserver(([entry]) => {
+                this.shown = entry.isIntersecting;
+            }, { threshold: 0.1 });
+
+            observer.observe(this.$el);
+        }
+    }"
+    class="md:py-20 py-12 px-6 bg-white text-black transition-all duration-700 ease-out"
+    :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'"
+>
     
     <div class="w-full md:container mx-auto">
         <div class="mb-12">

@@ -2,7 +2,9 @@
 
 @section('content')
     <section class="relative">
-        <img src="/img/featured-projects/main-image.png" alt="" class="w-full h-[35vh] object-cover object-center">
+        <img src="{{ !empty($heroMedia) ? asset('storage/' . $heroMedia) : asset('img/featured-projects/main-image.png') }}" 
+            alt="Hero Projects" 
+            class="w-full h-[35vh] object-cover object-center">
     </section>
     
     <div 
@@ -126,7 +128,14 @@
                             >{{ old('message') }}</textarea>
                         </div>
 
-                        <div class="flex justify-end pt-2">
+                        <div class="flex flex-col sm:flex-row items-center justify-between pt-2 gap-4">
+                            <div>
+                                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                                @error('g-recaptcha-response')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
                             <x-ui.button 
                                 type="submit" 
                                 variant="primary"

@@ -1,3 +1,23 @@
+@php
+    $readyTitle = isset($readySection['ready_title']) && trim($readySection['ready_title']) !== ''
+        ? nl2br(e($readySection['ready_title'])) 
+        : 'Ready to Start <br> Your Project?';
+
+    $rawDescription = $readySection['ready_description'] ?? '';
+    $cleanDescription = trim(strip_tags($rawDescription));
+
+    $readyDescription = $cleanDescription !== '' 
+        ? $rawDescription 
+        : 'Pastikan Lahan Anda direncanakan dengan tepat sejak awal. Konsultasikan kebutuhan proyek Anda bersama PT Roda Dunia Abadi dan dapatkan konsultasi Gratis mengenai Site Development, Infrastructure, Geotechnical Construction, hingga pekerjaan lainnya.';
+
+    $readyFooter = isset($readySection['ready_footer']) && trim($readySection['ready_footer']) !== ''
+        ? $readySection['ready_footer']
+        : 'Diskusikan proyek Anda bersama kami.';
+        
+    $readyMedia = isset($readySection['ready_media']) && !empty($readySection['ready_media'])
+        ? asset('storage/' . $readySection['ready_media']) 
+        : asset('img/people.png');
+@endphp
 <section class="relative bg-primary"
      x-data="{ 
         shown: false,
@@ -19,10 +39,8 @@
 
     <div class="mx-auto lg:container w-full px-6 xl:px-12 2xl:px-0">
 
-        <!-- Menggunakan flex flex-col-reverse lg:block agar di mobile gambar berada di bawah teks -->
         <div class="relative flex flex-col-reverse lg:block min-h-[620px] lg:min-h-[700px]">
             
-            <!-- GAMBAR ORANG: Tetap dengan absolute-nya untuk layar besar, dan otomatis di bawah saat mobile -->
             <div class="pointer-events-none relative z-20 mt-8 md:mt-0 w-[100%] translate-x-0 lg:absolute lg:bottom-0 right-0 lg:w-[100%] lg:max-w-[780px] lg:translate-x-0 transition-all duration-1000 ease-out"
                  x-show="shown"
                  x-transition:enter="transition ease-out duration-1000"
@@ -30,7 +48,7 @@
                  x-transition:enter-end="opacity-100"
                  style="display: none;">
                 <img
-                    src="{{ asset('img/people.png') }}"
+                    src="{{ $readyMedia }}"
                     alt="Professional Consultant"
                     class="block h-auto w-full"
                 >
@@ -45,21 +63,15 @@
                 
                 <div class="max-w-2xl">
                     <x-ui.title tag="h1" lineColor="none" textColor="text-white" class="leading-[1.05] tracking-tight">
-                        Ready to Start
-                        <br>
-                        Your Project?
+                        {!! $readyTitle !!}
                     </x-ui.title>
 
                     <p class="mt-8 max-w-2xl text-sm leading-8 text-white md:text-lg">
-                        Pastikan Lahan Anda direncanakan dengan tepat sejak awal.
-                        Konsultasikan kebutuhan proyek Anda bersama PT Roda
-                        Dunia Abadi dan dapatkan konsultasi Gratis mengenai Site
-                        Development, Infrastructure, Geotechnical Construction,
-                        hingga pekerjaan lainnya.
+                        {{ $readyDescription }}
                     </p>
 
                     <p class="mt-8 text-sm font-bold text-white md:text-xl">
-                        Diskusikan proyek Anda bersama kami.
+                        {{ $readyFooter }}
                     </p>
 
                     <div class="mt-8">

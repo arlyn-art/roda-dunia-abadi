@@ -20,8 +20,8 @@ class HomeController extends Controller
         $heroSection = $homeSettings['Hero section']->payload ?? [];
 
         $supportSection = $homeSettings['Support section']->payload ?? [];
-        if (empty($supportData)) {
-            $supportData = [
+        if (empty($supportSection)) {
+            $supportSection = [
                 [
                     'support_counting' => 37,
                     'is_plus'          => false,
@@ -47,6 +47,8 @@ class HomeController extends Controller
 
         $serviceSection = $homeSettings['Services section']->payload ?? [];
 
+        $readySection = $homeSettings['Ready section']->payload ?? [];
+
         $homeProjects = HomeProject::with('project')
             ->orderBy('sort_order', 'asc')
             ->take(9)
@@ -62,6 +64,6 @@ class HomeController extends Controller
             ->take(9)
             ->get();
 
-        return view('home', compact('title','homeProjects', 'featuredProjects', 'homeNews', 'meta', 'heroSection', 'supportSection', 'aboutSection', 'serviceSection'));
+        return view('home', compact('title','homeProjects', 'featuredProjects', 'homeNews', 'meta', 'heroSection', 'supportSection', 'aboutSection', 'serviceSection', 'readySection'));
     }
 }

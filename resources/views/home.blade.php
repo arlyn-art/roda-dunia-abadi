@@ -9,5 +9,5 @@
     <x-trusted />
     <x-news :homeNews="$homeNews" />
     <x-partners />
-    <x-ready />
+    <x-ready :readySection="$readySection" />
 @endsection

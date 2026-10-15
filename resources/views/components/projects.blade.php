@@ -73,7 +73,7 @@
                     @forelse($homeProjects as $item)
                         @if($item->project)
                             <div class="swiper-slide">
-                                <a href="{{ route('projects.show', $item->project->slug) }}" class="group relative block overflow-hidden rounded-xl">
+                                <a href="{{ route('projects.show', $item->project->slug) }}" class="group relative block overflow-hidden">
                                     <img src="{{ $item->project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/main-image.png') }}" 
                                         alt="{{ $item->project->title }}" 
                                         class="w-full h-72 md:h-64 object-cover">
