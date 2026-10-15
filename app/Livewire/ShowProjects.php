@@ -11,7 +11,7 @@ class ShowProjects extends Component
     use WithPagination;
 
     public $search = '';
-    public $sort = 'latest'; 
+    public $sort = ''; 
 
     public function updatingSearch()
     {
@@ -36,8 +36,10 @@ class ShowProjects extends Component
 
         if ($this->sort === 'oldest') {
             $query->orderBy('years', 'asc')->orderBy('id', 'asc');
-        } else {
+        } elseif ($this->sort === 'latest') {
             $query->orderBy('years', 'desc')->orderBy('id', 'desc');
+        } else {
+            $query->orderBy('id', 'desc');
         }
 
         $projects = $query->paginate(9);

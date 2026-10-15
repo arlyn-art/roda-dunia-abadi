@@ -21,26 +21,72 @@
                     >
                 </div>
 
-                <div class="group relative w-auto shrink-0">
-                    <span class="pointer-events-none absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-x-3 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-x-2 group-hover:opacity-100">
+                <div 
+                    x-data="{ open: false }" 
+                    @mouseenter="open = true" 
+                    @mouseleave="open = false" 
+                    class="relative w-auto shrink-0"
+                >
+                    <span 
+                        class="pointer-events-none absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white transition-all duration-300 ease-out"
+                        :class="open ? 'opacity-100 translate-x-2' : 'opacity-0 -translate-x-3'"
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                         </svg>
                     </span>
 
-                    <select
-                        wire:model.live="sort"
-                        class="w-auto cursor-pointer appearance-none rounded-lg bg-black py-4 pl-8 pr-8 font-semibold text-white transition-all duration-300 focus:outline-none sm:pl-12 group-hover:pl-12"
+                    <button 
+                        type="button"
+                        class="flex items-center justify-between w-full sm:w-44 rounded-lg bg-black py-4 px-4 font-semibold text-white transition-all duration-300 focus:outline-none cursor-pointer pl-8 sm:pl-12"
+                        :class="open ? 'pl-12' : ''"
                     >
-                        <option value="latest">Latest</option>
-                        <option value="oldest">Oldest</option>
-                    </select>
-
-                    <span class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-white transition-transform duration-300 group-hover:rotate-180">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <span>
+                            @if($sort === 'latest')
+                                Latest
+                            @elseif($sort === 'oldest')
+                                Oldest
+                            @else
+                                Sort By
+                            @endif
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7"/>
                         </svg>
-                    </span>
+                    </button>
+
+                    <div 
+                        x-show="open" 
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 translate-y-1"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-1"
+                        style="display: none;"
+                        class="absolute right-0 left-0 mt-2 z-20 rounded-lg bg-black shadow-lg overflow-hidden border border-gray-800"
+                    >
+                        <div class="flex flex-col py-1">
+                            <button
+                                type="button"
+                                wire:click="$set('sort', 'latest')"
+                                @click="open = false"
+                                class="text-left px-4 py-3 text-sm text-white hover:bg-primary transition-colors cursor-pointer {{ $sort === 'latest' ? 'bg-primary/50 font-bold' : '' }}"
+                            >
+                                Latest
+                            </button>
+
+                            <button
+                                type="button"
+                                wire:click="$set('sort', 'oldest')"
+                                @click="open = false"
+                                class="text-left px-4 py-3 text-sm text-white hover:bg-primary transition-colors cursor-pointer {{ $sort === 'oldest' ? 'bg-primary/50 font-bold' : '' }}"
+                            >
+                                Oldest
+                            </button>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +99,6 @@
                         observer: null,
                         init() {
                             this.observer = new IntersectionObserver(([entry]) => {
-                                // Jika masuk viewport, set true. Jika keluar, set false agar bisa di-trigger ulang
                                 this.shown = entry.isIntersecting;
                             }, { threshold: 0.1 });
 
