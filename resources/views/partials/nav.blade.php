@@ -24,7 +24,7 @@
     </header>
 
     <nav 
-        :class="isScrolled ? 'w-full mx-auto fixed sm:top-0 top-0 left-0 right-0 shadow-2xl bg-white/80' : 'md:container w-full mx-auto md:absolute md:top-28 fixed top-0 left-0 right-0 shadow-md md:bg-secondary bg-white'" 
+        :class="isScrolled ? 'w-full mx-auto fixed sm:top-0 top-0 left-0 right-0 shadow-2xl bg-white' : 'md:container w-full mx-auto md:absolute md:top-28 fixed top-0 left-0 right-0 shadow-md md:bg-secondary bg-white'" 
         class="z-50 transition-all duration-300 ease-in-out"
     >
         <div class="px-4 sm:px-6 lg:px-8 flex items-center justify-between" :class="isScrolled ? 'md:container w-full mx-auto' : ''">
