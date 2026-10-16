@@ -14,7 +14,7 @@
              "
              class="transition-all duration-700 ease-out"
              :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
-            <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
+            <x-ui.title tag="h2" lineColor="primary" textColor="text-black" class="font-medium">
                 Our Services
             </x-ui.title>
         </div>
@@ -93,16 +93,16 @@
                             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
                             <img class="md:h-32 w-auto h-16 object-contain" src="{{ $iconSrc }}" alt="Icon Layanan">   
                         </div>
-                        
-                        <h2 class="relative z-10 my-3 text-primary md:text-4xl text-2xl font-semibold transition-all duration-700 ease-out delay-500"
-                            :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+
+                        <x-ui.title tag="h3" lineColor="none" textColor="text-primary" class="transition-all font-medium duration-700 ease-out delay-500" x-bind:class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
                             {{ $item['services_title'] ?? '' }}
-                        </h2>
-                        
-                        <p class="relative z-10 text-black md:text-lg text-sm transition-all duration-700 ease-out delay-700"
-                        :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
-                            {{ $item['services_description'] ?? '' }}
-                        </p>
+                        </x-ui.title>
+
+                        <div class="mt-2">
+                            <x-ui.paragraf tag="p" textColor="text-black" class="relative z-10 font-medium transition-all duration-700 ease-out delay-700" x-bind:class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'">
+                                {{ $item['services_description'] ?? '' }}
+                            </x-ui.paragraf>
+                        </div>  
                     </div>
                 </article>
             @endforeach

@@ -23,7 +23,7 @@
                 class="transition-all duration-700 ease-out"
                 :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
             >
-                <x-ui.title tag="h2" lineColor="primary" textColor="text-white">
+                <x-ui.title tag="h2" lineColor="primary" textColor="text-white" class="font-medium">
                     Recent & Featured Projects
                 </x-ui.title>
             </div>
@@ -98,39 +98,51 @@
                                             </template>
                                         </div>
 
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div>
-                                                <h3 class="text-xl md:text-2xl font-bold text-white mb-1">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                            <div>  
+                                                <x-ui.title tag="h4" lineColor="none" textColor="text-white" class="mb-1 font-bold">
                                                     {{ $project->title }}
-                                                </h3>
-
-                                                <p class="text-white font-bold text-sm md:text-base mb-4">
-                                                    {{ $project->location }}
-                                                </p>
+                                                </x-ui.title>
+                                                
+                                                <div class="mb-4">
+                                                    <x-ui.paragraf tag="p" textColor="text-white" class="font-bold">
+                                                        {{ $project->location }}
+                                                    </x-ui.paragraf>
+                                                </div>
 
                                                 @if($project->years)
-                                                    <span class="text-primary text-xs md:text-sm font-semibold uppercase tracking-wider block mb-1">
-                                                        TAHUN
-                                                    </span>
-                                                    <p class="text-white font-medium mb-4">
-                                                        {{ $project->years }}
-                                                    </p>
+                                                    <div class="mb-4">
+                                                        <div class="mb-1">
+                                                            <x-ui.paragraf tag="span" textColor="text-primary" class="font-bold uppercase tracking-wide block">
+                                                                TAHUN
+                                                            </x-ui.paragraf>
+                                                        </div>
+                                                        <x-ui.paragraf tag="p" textColor="text-white" class="font-medium">
+                                                            {{ $project->years }}
+                                                        </x-ui.paragraf>
+                                                    </div>
                                                 @endif
 
                                                 @if($project->working)
-                                                    <span class="text-primary text-xs md:text-sm font-semibold uppercase tracking-wider block mb-1">
-                                                        PEKERJAAN
-                                                    </span>
-                                                    <div class="text-white text-sm space-y-1 prose prose-invert">
-                                                        {!! $project->working !!}
+                                                    <div class="mb-4">
+                                                        <div class="mb-1">
+                                                            <x-ui.paragraf tag="span" textColor="text-primary" class="font-bold uppercase tracking-wide block">
+                                                                PEKERJAAN
+                                                            </x-ui.paragraf>
+                                                        </div>
+                                                        <x-ui.paragraf tag="p" textColor="text-white" class="font-medium">
+                                                            {!! $project->working !!}
+                                                        </x-ui.paragraf>
                                                     </div>
                                                 @endif
                                             </div>
 
-                                            <div class="text-white text-sm md:text-base space-y-4">
+                                            <div class="text-white text-sm md:text-base space-y-4 md:col-span-2">
                                                 @if($project->description)
-                                                    <div class="prose prose-invert max-w-none text-white tiptap-content">
-                                                        {!! $project->description !!}
+                                                    <div class="prose prose-invert max-w-none tiptap-content">
+                                                        <x-ui.paragraf tag="p" textColor="text-white" class="font-medium">
+                                                            {!! $project->description !!}
+                                                        </x-ui.paragraf>
                                                     </div>
                                                 @endif
                                             </div>
@@ -147,11 +159,11 @@
                 </div>
             </div>
 
-            <div class="swiper-button-prev-custom absolute left-[-16px] xl:left-[-8px] 2xl:left-[-4rem] md:top-[35%] top-[20%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
+            <div class="swiper-button-prev-custom absolute left-[-24px] xl:left-[-8px] 2xl:left-[-4rem] md:top-[35%] top-[20%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
                 <img src="/img/prev-red.png" alt="Prev" class="w-6 h-6">
             </div>
 
-            <div class="swiper-button-next-custom absolute right-[-16px] xl:right-[-8px] 2xl:right-[-4rem] md:top-[35%] top-[20%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
+            <div class="swiper-button-next-custom absolute right-[-24px] xl:right-[-8px] 2xl:right-[-4rem] md:top-[35%] top-[20%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
                 <img src="/img/prev-red.png" alt="Next" class="w-6 h-6 rotate-180">
             </div>
         </div>

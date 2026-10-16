@@ -9,7 +9,7 @@
              "
              class="transition-all duration-700 ease-out pb-8"
              :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
-            <x-ui.title tag="h1" lineColor="primary" textColor="text-white">
+            <x-ui.title tag="h2" lineColor="primary" textColor="text-white" class="font-medium">
                 Company News
             </x-ui.title>
         </div>
@@ -41,21 +41,32 @@
                             @endphp
 
                             @if($news)
-                                <article class="swiper-slide overflow-hidden md:bg-none bg-white md:rounded-none rounded-xl md:px-6 px-6 md:py-0 py-6 flex flex-col h-auto">
-                                    <img src="{{ $news->thumbnail_url }}" alt="{{ $news->title }}" class="mt-4 h-56 w-full object-cover">
+                                <article class="swiper-slide overflow-hidden md:bg-none bg-white md:rounded-none rounded-xl px-6 md:px-0 md:py-0 py-6 flex flex-col h-auto">
+                                    <img src="{{ $news->thumbnail_url }}" alt="{{ $news->title }}" class="mt-4 aspect-[4/3] w-full object-cover">
                                     
                                     <div class="flex flex-col items-start pt-4 flex-grow">
-                                        <h3 class="text-xl font-bold text-black">{{ $news->title }}</h3>
+                                        <x-ui.title tag="h4" lineColor="none" textColor="text-black" class="font-bold">
+                                            {{ $news->title }}
+                                        </x-ui.title>
                                         
-                                        <p class="mb-4 text-sm text-black/60 font-bold">
-                                            posted by {{ $news->user->name ?? 'Admin' }} &nbsp;|&nbsp; {{ \Carbon\Carbon::parse($news->date)->format('M d, Y') }}
-                                        </p>
+                                        <div class="mb-4 mt-1">
+                                            <x-ui.paragraf tag="p" textColor="text-black/60" class="font-medium">
+                                                posted by {{ $news->user->name ?? 'Admin' }} &nbsp;|&nbsp; {{ \Carbon\Carbon::parse($news->date)->format('M d, Y') }}
+                                            </x-ui.paragraf>
+                                        </div>
+
+
+                                        <div class="mb-6 leading-relaxed">
+                                            <x-ui.paragraf tag="p" textColor="text-black">
+                                                {{ $news->excerpt }}
+                                            </x-ui.paragraf>
+                                        </div>
                                         
-                                        <p class="mb-6 md:text-xl text-lg leading-relaxed text-black">
-                                            {{ $news->excerpt }}
-                                        </p>
-                                        
-                                        <x-ui.button href="{{ route('articles.show', $news->slug) }}" class="mt-auto">Baca Detail</x-ui.button>
+                                        <x-ui.button href="{{ route('articles.show', $news->slug) }}" class="mt-auto">
+                                            <x-ui.paragraf tag="p" textColor="text-white">
+                                                Baca Detail
+                                            </x-ui.paragraf>
+                                        </x-ui.button>
                                     </div>
                                 </article>
                             @endif

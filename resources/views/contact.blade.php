@@ -21,10 +21,10 @@
         class="md:py-20 py-12 px-6 bg-white transition-all duration-700 ease-out"
         :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'"
     >
-        <div class="w-full md:container mx-auto">
+        <div class="w-full md:container mx-auto px-6 xl:px-12 2xl:px-0">
             
             <div class="mb-12">
-                <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
+                <x-ui.title tag="h2" lineColor="primary" textColor="text-black" class="font-medium">
                     Contact Us
                 </x-ui.title>
             </div>
@@ -53,7 +53,7 @@
 
                     <div class="bg-primary p-8 md:p-10 text-white flex flex-col justify-between">
                         <div>
-                            <x-ui.title tag="h2" lineColor="white" textColor="text-white" class="mb-4">
+                            <x-ui.title tag="h3" lineColor="white" textColor="text-white" class="mb-4 font-medium">
                                 Head Office
                             </x-ui.title>
                             <p class="text-sm md:text-base leading-relaxed text-white/90">

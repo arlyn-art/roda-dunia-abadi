@@ -19,7 +19,7 @@
                 class="justify-start transition-all duration-700 ease-out"
                 :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
             >
-                <x-ui.title tag="h1" lineColor="primary" textColor="text-white">
+                <x-ui.title tag="h2" lineColor="primary" textColor="text-white" class="font-medium">
                     Our Partners
                 </x-ui.title>
             </div>
@@ -93,11 +93,11 @@
                 </div>
             </div>
 
-            <div class="partners-swiper-prev absolute left-[-40px] xl:left-[-8px] 2xl:left-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
+            <div class="partners-swiper-prev absolute left-[-40px] xl:left-[-8px] 2xl:left-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
                 <img src="/img/prev-white.png" alt="Prev" class="w-6 h-6">
             </div>
 
-            <div class="partners-swiper-next absolute right-[-40px] xl:right-[-8px] 2xl:right-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
+            <div class="partners-swiper-next absolute right-[-40px] xl:right-[-8px] 2xl:right-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
                 <img src="/img/prev-white.png" alt="Next" class="w-6 h-6 rotate-180">
             </div>
         </div>

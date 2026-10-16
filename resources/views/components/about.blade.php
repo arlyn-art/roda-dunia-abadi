@@ -37,33 +37,35 @@
         observer.observe($el);
      ">
     
-    <div class="w-full md:w-2/3 mx-auto transition-all duration-1000 ease-out transform"
+    <div class="w-full xl:w-3/4 2xl:w-2/3 mx-auto transition-all duration-1000 ease-out transform"
          :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'">
         
         <div class="flex flex-col space-y-2 gap-4 items-center">
             <div class="w-24 h-1 bg-primary"></div>
-            <h1 class="text-lg sm:text-4xl md:text-5xl text-primary font-bold text-center">
+            <x-ui.title tag="h2" lineColor="none" textColor="text-primary" class="text-center" class="font-medium">
                 {{ $aboutTitle }}
-            </h1>
+            </x-ui.title>
         </div>
 
-        <div class="mt-4">
-            <div class="text-black text-center text-[0.65rem] md:text-lg prose max-w-none">
+        <div class="mt-4 text-center">
+            <x-ui.paragraf tag="p" textColor="text-black">
                 {!! $aboutDescription !!}
-            </div>
+            </x-ui.paragraf>
         </div>
 
         <div class="mt-8 flex justify-center">
             @if($aboutFile)
                 <a href="{{ $fileUrl }}" target="_blank">
                     <x-ui.button variant="primary">
-                        DOWNLOAD COMPANY PROFILE
+                        <x-ui.paragraf tag="p" textColor="text-white">
+                            DOWNLOAD COMPANY PROFILE
+                        </x-ui.paragraf>
                     </x-ui.button>
                 </a>
             @else
-                <x-ui.button href="#" variant="primary">
+                <x-ui.paragraf tag="p" textColor="text-white">
                     DOWNLOAD COMPANY PROFILE
-                </x-ui.button>
+                </x-ui.paragraf>
             @endif
         </div>
 

@@ -19,7 +19,7 @@
                 class="justify-start transition-all duration-700 ease-out"
                 :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
             >
-                <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
+                <x-ui.title tag="h2" lineColor="primary" textColor="text-black" class="font-medium">
                     Trusted By
                 </x-ui.title>
             </div>
@@ -43,7 +43,10 @@
                 :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
             >
                 <x-ui.button href="/partners" variant="primary" class="ml-auto">
-                    See All Partners
+                    
+                    <x-ui.paragraf tag="p" textColor="text-white">
+                            See All Partners
+                        </x-ui.paragraf>
                 </x-ui.button>
             </div>
         </div>

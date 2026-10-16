@@ -1,7 +1,7 @@
-<div class="md:py-20 py-12 px-6 bg-white">
-    <div class="w-full md:container mx-auto">
+<div class="md:py-20 py-12 bg-white">
+    <div class="w-full md:container mx-auto px-6 xl:px-12 2xl:px-0">
         <div class="flex flex-col md:flex-row justify-between items-start sm:items-center mb-12 gap-4">
-            <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
+            <x-ui.title tag="h2" lineColor="primary" textColor="text-black" class="font-medium">
                 Articles
             </x-ui.title>
 
@@ -20,28 +20,6 @@
                         class="w-full rounded-lg border border-gray-700 bg-white py-4 pl-10 pr-3 text-black placeholder-black focus:border-primary focus:outline-none"
                     >
                 </div>
-
-                {{-- <div class="group relative w-auto shrink-0">
-                    <span class="pointer-events-none absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-x-3 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white opacity-0 transition-all duration-300 ease-out group-hover:translate-x-2 group-hover:opacity-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-
-                    <select
-                        wire:model.live="sort"
-                        class="w-auto cursor-pointer appearance-none rounded-lg bg-black py-4 pl-8 pr-8 font-semibold text-white transition-all duration-300 focus:outline-none sm:pl-12 group-hover:pl-12"
-                    >
-                        <option value="latest">Latest</option>
-                        <option value="oldest">Oldest</option>
-                    </select>
-
-                    <span class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-white transition-transform duration-300 group-hover:rotate-180">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7"/>
-                        </svg>
-                    </span>
-                </div> --}}
             </div>
         </div>
         
@@ -64,12 +42,12 @@
                     :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
                 >
                     <a href="{{ route('articles.show', $article->slug) }}" class="flex flex-col group cursor-pointer">
-                        <div class="w-full h-[120px] md:h-[320px] overflow-hidden mb-4 bg-black/40">
+                        <div class="w-full aspect-[4/3] overflow-hidden mb-4 bg-black/40">
                             <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         </div>
                         
                         <div class="px-0">
-                            <h3 class="text-sm md:text-xl font-bold text-black mb-2 group-hover:text-primary transition">
+                            <h3 class="text-sm xl:text-[1.2rem] 2xl:text-xl font-bold text-black mb-2 group-hover:text-primary transition">
                                 {{ $article->title }}
                             </h3>
                             

@@ -1,5 +1,5 @@
 <footer class="w-full text-white bg-black border-t border-gray-800">
-    <div class="sm:container w-full mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+    <div class="sm:container w-full mx-auto px-6 xl:px-12 2xl:px-0 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         
         <div class="flex flex-col space-y-6">
             <a href="/" class="flex items-center space-x-3">
@@ -12,9 +12,11 @@
                 </div>
             </a>
 
-            <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg">
-                PT. Roda Dunia Abadi mengerjakan konstruksi jalan raya dan jalan lingkungan, pengerukan dan pengurugan, irigasi dan drainase serta penggalian dan pemindahan tanah.
-            </p>
+            <div class="leading-relaxed">
+                <x-ui.paragraf tag="p" textColor="text-white">
+                    PT. Roda Dunia Abadi mengerjakan konstruksi jalan raya dan jalan lingkungan, pengerukan dan pengurugan, irigasi dan drainase serta penggalian dan pemindahan tanah.
+                </x-ui.paragraf>
+            </div>
 
             <div class="flex items-center space-x-4">
                 <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full hover:border-2 hover:border-primary text-white transition">
@@ -36,16 +38,18 @@
         </div>
 
         <div class="flex flex-col space-y-3 md:items-start md:pl-12">
-            <x-ui.title tag="h3" lineColor="primary" textColor="text-white">
+            <x-ui.title tag="h3" lineColor="primary" textColor="text-white" class="font-medium">
                 Head Office
             </x-ui.title>
-            <p class="text-gray-300 text-sm md:text-base leading-relaxed">
-                Jl. Muara baru Komplek Pergudangan<br>
-                Blok A9-10 RT. 001 / 017,<br>
-                Kel Penjaringan, Kec Penjaringan<br>
-                Jakarta Utara 14440<br>
-                INDONESIA
-            </p>
+            <div class="leading-relaxed">
+                <x-ui.paragraf tag="p" textColor="text-white">
+                    Jl. Muara baru Komplek Pergudangan<br>
+                    Blok A9-10 RT. 001 / 017,<br>
+                    Kel Penjaringan, Kec Penjaringan<br>
+                    Jakarta Utara 14440<br>
+                    INDONESIA
+                </x-ui.paragraf>
+            </div>
         </div>
 
     </div>

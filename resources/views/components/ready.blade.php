@@ -39,9 +39,9 @@
 
     <div class="mx-auto lg:container w-full px-6 xl:px-12 2xl:px-0">
 
-        <div class="relative flex flex-col-reverse lg:block min-h-[620px] lg:min-h-[700px]">
+        <div class="relative flex flex-col-reverse lg:block">
             
-            <div class="pointer-events-none relative z-20 mt-8 md:mt-0 w-[100%] translate-x-0 lg:absolute lg:bottom-0 right-0 lg:w-[100%] lg:max-w-[780px] lg:translate-x-0 transition-all duration-1000 ease-out"
+            <div class="pointer-events-none relative z-20 mt-8 md:mt-0 w-[100%] translate-x-0 lg:absolute lg:bottom-0 right-0 lg:right-[-4rem] xl:right-[-4rem] 2xl:right-0 w-[100%] lg:max-w-[660px] xl:max-w-[720px] 2xl:max-w-[780px] lg:translate-x-0 transition-all duration-1000 ease-out"
                  x-show="shown"
                  x-transition:enter="transition ease-out duration-1000"
                  x-transition:enter-start="opacity-0"
@@ -62,24 +62,30 @@
                  style="display: none;">
                 
                 <div class="max-w-2xl">
-                    <x-ui.title tag="h1" lineColor="none" textColor="text-white" class="leading-[1.05] tracking-tight">
+                    <x-ui.title tag="h1" lineColor="none" textColor="text-white" class="leading-[1.05] font-medium tracking-tight">
                         {!! $readyTitle !!}
                     </x-ui.title>
 
-                    <p class="mt-8 max-w-2xl text-sm leading-8 text-white md:text-lg">
-                        {{ $readyDescription }}
-                    </p>
+                    <div class="mt-8">
+                        <x-ui.paragraf tag="p" textColor="text-white">
+                            {{ $readyDescription }}
+                        </x-ui.paragraf>
+                    </div>
 
-                    <p class="mt-8 text-sm font-bold text-white md:text-xl">
-                        {{ $readyFooter }}
-                    </p>
+                    <div class="mt-8">
+                        <x-ui.paragraf tag="span" textColor="text-white" class="font-bold">
+                            {{ $readyFooter }}
+                        </x-ui.paragraf>
+                    </div>
 
                     <div class="mt-8">
                         <x-ui.button
                             variant="black"
                             href="/contact"
-                        >
-                            FREE CONSULTATION
+                        >   
+                            <x-ui.paragraf tag="p" textColor="text-white">
+                                FREE CONSULTATION
+                            </x-ui.paragraf>
                         </x-ui.button>
                     </div>
 

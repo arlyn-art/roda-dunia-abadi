@@ -24,7 +24,9 @@
     </title>
 
     {{-- icon --}}
-    <link rel="icon" type="image/png" href="/img/logo-red.png">
+    {{-- <link rel="icon" type="image/png" href="/img/logo-red.png"> --}}
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

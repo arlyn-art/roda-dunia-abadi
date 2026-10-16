@@ -1,7 +1,7 @@
-<div class="md:py-20 py-12 px-6 bg-white">
-    <div class="w-full md:container mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-start sm:items-center mb-12 gap-4">
-            <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
+<div class="md:py-20 py-12 bg-white">
+    <div class="w-full md:container mx-auto px-6 xl:px-12 2xl:px-0">
+        <div class="flex flex-col md:flex-row justify-between items-start sm:items-center mb-12 gap-4 ">
+            <x-ui.title tag="h2" lineColor="primary" textColor="text-black" class="font-medium">
                 Our Projects
             </x-ui.title>
 
@@ -110,12 +110,12 @@
                     :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
                 >
                     <a href="{{ route('projects.show', $project->slug) }}" class="flex flex-col group cursor-pointer">
-                        <div class="w-full h-[120px] md:h-[320px] overflow-hidden mb-4 bg-black/40">
+                        <div class="w-full aspect-[4/3] overflow-hidden mb-4 bg-black/40">
                             <img src="{{ $project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/main-image.png') }}" alt="{{ $project->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         </div>
                         <div class="sm:px-6 px-0">
-                            <h3 class="text-sm md:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->title }}</h3>
-                            <h3 class="text-sm md:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->location }}</h3>
+                            <h3 class="text-sm xl:text-[1.2rem] 2xl:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->title }}</h3>
+                            <h3 class="text-sm xl:text-[1.2rem] 2xl:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->location }}</h3>
                             @if($project->years)
                                 <p class="text-black font-semibold text-sm">
                                     {{ $project->years }}{{ $project->end_year ? ' - ' . $project->end_year : '' }}

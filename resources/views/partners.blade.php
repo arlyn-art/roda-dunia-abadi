@@ -7,11 +7,11 @@
             class="w-full h-[35vh] object-cover object-center">
     </section>
 
-    <div class="md:py-20 py-12 px-6 bg-white">
-        <div class="w-full md:container mx-auto">
+    <div class="md:py-20 py-12 bg-white">
+        <div class="w-full md:container mx-auto px-6 xl:px-12 2xl:px-0">
             
             <div class="mb-12">
-                <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
+                <x-ui.title tag="h2" lineColor="primary" textColor="text-black" class="font-medium">
                     Our Partners
                 </x-ui.title>
             </div>

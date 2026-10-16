@@ -47,7 +47,7 @@
             @php
                 $items = !empty($heroSection) ? $heroSection : [
                     [
-                        'hero_title' => 'BUILDING THE GROUND FOR SUCCESS',
+                        'hero_title' => '',
                         'hero_subtitle' => '',
                         'hero_media' => null
                     ]
@@ -57,27 +57,30 @@
             @foreach($items as $item)
                 @php
                     $media = $item['hero_media'] ?? null;
+                    if (empty($media)) {
+                        $media = env('CUSTOM_VIDEO');
+                    }
                     $isVideo = $media && preg_match('/\.(mp4|webm|ogg|mov)$/i', $media);
                 @endphp
 
                 <div class="swiper-slide relative w-full h-full overflow-hidden">
                     @if($media)
                         @if($isVideo) 
-                            <video class="w-full h-full object-cover hero-video" muted playsinline autoplay preload="auto"> 
-                                <source src="{{ asset('storage/' . $media) }}" type="video/mp4">
+                            <video class="w-full h-full object-cover hero-video" muted playsinline autoplay preload="auto" loop> 
+                                <source src="{{ filter_var($media, FILTER_VALIDATE_URL) ? $media : asset('storage/' . $media) }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         @else
-                            <img src="{{ asset('storage/' . $media) }}" class="w-full h-full object-cover" alt="Hero Media">
+                            <img src="{{ filter_var($media, FILTER_VALIDATE_URL) ? $media : asset('storage/' . $media) }}" class="w-full h-full object-cover" alt="Hero Media">
                         @endif
                     @else
                         <img src="{{ asset('img/home/main-image.png') }}" class="w-full h-full object-cover" alt="Main Hero Image">
                     @endif
 
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                        <h1 class="text-white text-sm sm:text-4xl md:text-5xl font-extrabold tracking-wider uppercase drop-shadow-xl">
+                        <x-ui.title tag="h2" lineColor="none" textColor="text-white" class="tracking-wider uppercase drop-shadow-xl font-bold">
                             {{ $item['hero_title'] ?? '' }}
-                        </h1>
+                        </x-ui.title>
                         @if(!empty($item['hero_subtitle']))
                             <p class="text-white text-xs sm:text-lg mt-2 drop-shadow-md max-w-2xl">
                                 {{ $item['hero_subtitle'] }}
@@ -114,13 +117,15 @@
                         <img src="{{ $mediaSrc }}" class="w-full h-auto object-contain" alt="{{ $item['support_title'] ?? 'Support Icon' }}">
                     </div>
                     <div class="flex flex-col items-start">
-                        <span class="text-sm sm:text-4xl font-extrabold" 
-                              x-text="{{ $isPlus ? "('+' + $countVar)" : $countVar }}">
-                              {{ $isPlus ? '+' : '' }}0
+                        <span class="text-sm md:text-2xl xl:text-4xl font-extrabold" 
+                            x-text="{{ $isPlus ? "('+' + $countVar)" : $countVar }}">
+                            {{ $isPlus ? '+' : '' }}0
                         </span>
-                        <span class="text-[0.5rem] sm:text-lg tracking-wider uppercase font-semibold text-white/90">
-                            {{ $item['support_title'] ?? '' }}
-                        </span>
+                        <div class="tracking-wider mt-1">
+                            <x-ui.paragraf tag="p" textColor="text-white/90" class="font-semibold">
+                                {{ $item['support_title'] ?? '' }}
+                            </x-ui.paragraf>
+                        </div>
                     </div>
                 </div>
             @endforeach
