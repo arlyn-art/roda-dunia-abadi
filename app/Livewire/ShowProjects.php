@@ -42,7 +42,7 @@ class ShowProjects extends Component
             $query->orderBy('id', 'desc');
         }
 
-        $projects = $query->paginate(9);
+        $projects = $query->paginate(6);
 
         $projects->getCollection()->transform(function ($project) {
             $thumbnailMedia = $project->getFirstMediaUrl('thumbnail');

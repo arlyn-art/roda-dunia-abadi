@@ -39,7 +39,7 @@ class ShowNews extends Component
             $query->orderBy('date', 'desc')->orderBy('id', 'desc');
         }
 
-        $articles = $query->paginate(9);
+        $articles = $query->paginate(6);
 
         return view('livewire.show-news', compact('articles'));
     }
