@@ -67,37 +67,37 @@
         >
             <div class="swiper partners-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center py-6 px-8">
                         <img src="/img/clients/clients-1.png" alt="partners Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center py-6 px-8">
                         <img src="/img/clients/clients-2.png" alt="partners Partner 2 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center py-6 px-8">
                         <img src="/img/clients/clients-3.png" alt="partners Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center py-6 px-8">
                         <img src="/img/clients/clients-1.png" alt="partners Partner 4 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center py-6 px-8">
                         <img src="/img/clients/clients-2.png" alt="partners Partner 5 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center py-6 px-8">
                         <img src="/img/clients/clients-3.png" alt="partners Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
                 </div>
             </div>
 
-            <div class="partners-swiper-prev absolute left-[-40px] xl:left-[-8px] 2xl:left-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
+            <div class="partners-swiper-prev absolute left-[-40px] xl:left-[-32px] 2xl:left-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
                 <img src="/img/prev-white.png" alt="Prev" class="w-6 h-6">
             </div>
 
-            <div class="partners-swiper-next absolute right-[-40px] xl:right-[-8px] 2xl:right-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
+            <div class="partners-swiper-next absolute right-[-40px] xl:right-[-32px] 2xl:right-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-white/60 p-3 rounded-full transition">
                 <img src="/img/prev-white.png" alt="Next" class="w-6 h-6 rotate-180">
             </div>
         </div>

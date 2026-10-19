@@ -73,37 +73,37 @@
         >
             <div class="swiper trusted-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center p-8">
                         <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center p-8">
                         <img src="/img/trusted/trusted-2.png" alt="Trusted Partner 2 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center p-8">
                         <img src="/img/trusted/trusted-3.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center p-8">
                         <img src="/img/trusted/trusted-4.png" alt="Trusted Partner 4 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center p-8">
                         <img src="/img/trusted/trusted-5.png" alt="Trusted Partner 5 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
 
-                    <div class="swiper-slide flex items-center justify-center">
+                    <div class="swiper-slide flex items-center justify-center p-8">
                         <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
                     </div>
                 </div>
             </div>
 
-            <div class="trusted-swiper-prev absolute left-[-40px] xl:left-[-8px] 2xl:left-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
+            <div class="trusted-swiper-prev absolute left-[-40px] xl:left-[-32px] 2xl:left-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
                 <img src="/img/prev-red.png" alt="Prev" class="w-6 h-6">
             </div>
 
-            <div class="trusted-swiper-next absolute right-[-40px] xl:right-[-8px] 2xl:right-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
+            <div class="trusted-swiper-next absolute right-[-40px] xl:right-[-32px] 2xl:right-[-4rem] top-[50%] -translate-y-1/2 z-20 cursor-pointer hover:bg-primary/20 p-3 rounded-full transition">
                 <img src="/img/prev-red.png" alt="Next" class="w-6 h-6 rotate-180">
             </div>
         </div>
