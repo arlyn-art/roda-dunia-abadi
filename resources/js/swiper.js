@@ -2,10 +2,10 @@ import Swiper from 'swiper/bundle';
 
 document.addEventListener('DOMContentLoaded', function () {
     if (document.querySelector('.hero-swiper')) {
-        new Swiper('.hero-swiper', {
+        const heroSwiper = new Swiper('.hero-swiper', {
             loop: true,
             autoplay: {
-                delay: 5000,
+                delay: 7000, 
                 disableOnInteraction: false,
             },
             effect: 'fade',
@@ -27,8 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         function playActiveSlideVideo(swiperInstance) {
-            swiperInstance.autoplay.stop();
-
             document.querySelectorAll('.hero-video').forEach(video => {
                 video.pause();
                 video.currentTime = 0;
@@ -42,12 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (activeVideo) {
                     activeVideo.muted = true;
-                    activeVideo.loop = false;
-                    activeVideo.onended = function () {
-                        if (swiperInstance.slides[swiperInstance.activeIndex] === activeSlide) {
-                            swiperInstance.slideNext();
-                        }
-                    };
+                    
+                    const uniqueSlides = swiperInstance.el.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
+                    const totalRealSlides = uniqueSlides.length;
+
+                    if (totalRealSlides <= 1) {
+                        activeVideo.loop = true;
+                    } else {
+                        activeVideo.loop = false;
+                        activeVideo.onended = function () {
+                            if (swiperInstance.slides[swiperInstance.activeIndex] === activeSlide) {
+                                swiperInstance.slideNext(); 
+                            }
+                        };
+                    }
+
                     activeVideo.play().catch(error => {
                         console.log("Autoplay ditolak browser:", error);
                         swiperInstance.autoplay.start();
@@ -55,8 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     swiperInstance.autoplay.start();
                 }
-            } else {
-                swiperInstance.autoplay.start();
             }
         }
     }
