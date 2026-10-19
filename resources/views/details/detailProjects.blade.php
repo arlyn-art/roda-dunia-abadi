@@ -20,11 +20,11 @@
             observer.observe(this.$el);
         }
     }"
-    class="md:py-20 py-12 px-6 bg-white text-black transition-all duration-700 ease-out"
+    class="py-12 px-6 bg-white text-black transition-all duration-700 ease-out"
     :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'"
 >
     
-    <div class="w-full md:container mx-auto">
+    <div class="w-full md:container mx-auto px-6 xl:px-12 2xl:px-0">
         <div class="mb-12">
             <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
                 Our Projects

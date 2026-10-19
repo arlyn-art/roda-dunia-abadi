@@ -42,7 +42,7 @@
         
         <div class="flex flex-col space-y-2 gap-4 items-center">
             <div class="w-24 h-1 bg-primary"></div>
-            <x-ui.title tag="h2" lineColor="none" textColor="text-primary" class="text-center" class="font-medium">
+            <x-ui.title tag="h2" lineColor="none" textColor="text-primary" class="text-center" class="font-medium text-center">
                 {{ $aboutTitle }}
             </x-ui.title>
         </div>

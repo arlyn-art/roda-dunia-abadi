@@ -53,7 +53,7 @@
                 x-transition:leave-end="opacity-0 scale-95"
                 class="flex items-center space-x-2 py-2 xl:w-1/4 w-auto"
             >
-                <div class="w-auto h-10 md:h-12 flex items-center justify-center">
+                <div class="w-auto h-10 xl:h-10 2xl:h-12 flex items-center justify-center">
                     <img src="/img/logo-red.png" alt="Logo" class="w-full h-full">
                 </div>
             </a>
@@ -75,7 +75,7 @@
             </div>
 
             <div class="flex items-center md:hidden py-3">
-                <button @click="isOpen = !isOpen" class="text-black focus:outline-none p-2 rounded-lg hover:bg-secondary-hover">
+                <button @click="isOpen = !isOpen" class="text-black focus:outline-none p-2 rounded-lg hover:bg-secondary-hover cursor-pointer">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" style="display: none;"></path>

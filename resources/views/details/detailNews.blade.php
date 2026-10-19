@@ -21,7 +21,7 @@
         class="transition-all duration-700 ease-out"
         :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'"
     >
-        <div class="w-full md:container mx-auto px-6 py-12 md:py-20">
+        <div class="w-full md:container mx-auto py-12 px-6 xl:px-12 2xl:px-0">
             <div class="mb-12">
                 <x-ui.title tag="h1" lineColor="primary" textColor="text-black">
                     Article

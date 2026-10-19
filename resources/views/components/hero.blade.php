@@ -122,9 +122,9 @@
                             {{ $isPlus ? '+' : '' }}0
                         </span>
                         <div class="tracking-wider mt-1">
-                            <x-ui.paragraf tag="p" textColor="text-white/90" class="font-semibold">
+                            <p class="font-semibold text-white/90 2xl:text-[1.25rem] xl:text-[1.15rem] lg:text-[1rem] md:text-[0.85rem] sm:text-[0.65rem] text-[0.45rem] tracking-wide">
                                 {{ $item['support_title'] ?? '' }}
-                            </x-ui.paragraf>
+                            </p>
                         </div>
                     </div>
                 </div>
