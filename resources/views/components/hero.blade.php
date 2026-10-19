@@ -66,7 +66,7 @@
                 <div class="swiper-slide relative w-full h-full overflow-hidden">
                     @if($media)
                         @if($isVideo) 
-                            <video class="w-full h-full object-cover hero-video" muted playsinline autoplay preload="auto" loop> 
+                            <video class="w-full h-full object-cover hero-video" autoplay muted loop playsinline preload="auto"> 
                                 <source src="{{ filter_var($media, FILTER_VALIDATE_URL) ? $media : asset('storage/' . $media) }}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
