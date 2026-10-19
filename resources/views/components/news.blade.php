@@ -29,7 +29,7 @@
                     this.observer?.disconnect();
                 }
             }"
-            class="transition-all duration-700 ease-out pb-8 md:bg-white bg-none md:py-12 md:px-16 py-0 px-0 rounded-2xl"
+            class="transition-all duration-700 ease-out pb-8 md:bg-white bg-none md:py-12 md:px-14 py-0 px-0 rounded-2xl"
             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
         >
             <div class="relative">

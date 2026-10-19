@@ -15,13 +15,13 @@
     <header class="hidden md:block w-full bg-white border-b border-gray-100 px-6 xl:px-12 2xl:px-0">
         <div class="md:container w-full mx-auto pt-8 pb-12 flex justify-between items-center gap-4">
             <a href="/" class="flex items-center space-x-3">
-                <div class="w-16 h-16 flex items-center justify-center">
-                    <img src="/img/logo-red.png" alt="Logo">
+                <div class="w-auto h-12 flex items-center justify-center">
+                    <img src="/img/logo-red.png" alt="Logo" class="w-full h-full">
                 </div>
-                <div>
+                {{-- <div>
                     <span class="block font-black text-2xl tracking-wide text-gray-900">PT RODA DUNIA ABADI</span>
                     <span class="block text-sm font-semibold tracking-wider text-gray-600">SITEWORK CONTRACTOR</span>
-                </div>
+                </div> --}}
             </a>
 
             <div class="flex items-center space-x-3">
@@ -37,7 +37,7 @@
     </header>
 
     <nav 
-        :class="isScrolled ? 'w-full mx-auto fixed sm:top-0 top-0 left-0 right-0 shadow-2xl bg-white' : 'md:container w-full mx-auto md:absolute md:top-28 fixed top-0 left-0 right-0 shadow-md md:bg-secondary bg-white'" 
+        :class="isScrolled ? 'w-full mx-auto fixed sm:top-0 top-0 left-0 right-0 shadow-2xl bg-white' : 'md:container w-full mx-auto md:absolute md:top-26 fixed top-0 left-0 right-0 shadow-md md:bg-secondary bg-white'" 
         class="z-50 transition-all duration-300 ease-in-out"
     >
         <div class="px-6 xl:px-12 2xl:px-0 flex items-center justify-between" :class="isScrolled ? 'md:container w-full mx-auto' : ''">
@@ -53,10 +53,8 @@
                 x-transition:leave-end="opacity-0 scale-95"
                 class="flex items-center space-x-2 py-2 xl:w-1/4 w-auto"
             >
-                <img src="/img/logo-red.png" class="2xl:w-12 2xl:h-12 xl:w-8 xl:h-8 w-8 h-8" alt="Logo Small">
-                <div class="flex flex-col leading-tight">
-                    <span class="font-bold text-black 2xl:text-[0.95rem] xl:text-[0.75rem] lg:text-[0.65rem] text-[0.55rem] tracking-wider">PT RODA DUNIA ABADI</span>
-                    <span class="block 2xl:text-[0.95rem] xl:text-[0.75rem] lg:text-[0.65rem] lg:text-xs xl:text-xs text-[0.55rem] font-semibold text-black">SITEWORK CONTRACTOR</span>
+                <div class="w-auto h-10 md:h-12 flex items-center justify-center">
+                    <img src="/img/logo-red.png" alt="Logo" class="w-full h-full">
                 </div>
             </a>
 
