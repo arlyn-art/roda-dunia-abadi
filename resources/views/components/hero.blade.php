@@ -47,7 +47,7 @@
             @php
                 $items = !empty($heroSection) ? $heroSection : [
                     [
-                        'hero_title' => '',
+                        'hero_title' => 'BUILDING THE GROUND FOR SUCCESS',
                         'hero_subtitle' => '',
                         'hero_media' => null
                     ]
