@@ -39,7 +39,7 @@
                                 
                                 $images = [];
                                 $thumbnail = $project->getFirstMediaUrl('thumbnail');
-                                $images[] = $thumbnail ?: asset('img/featured-projects/main-image.png');
+                                $images[] = $thumbnail ?: asset('img/featured-projects/thumbnail.jpeg');
 
                                 foreach ($project->getMedia('galeries') as $media) {
                                     $images[] = $media->getUrl();

@@ -65,6 +65,6 @@ class News extends Model implements HasMedia
             return $media;
         }
 
-        return asset('img/featured-projects/main-image.png');
+        return asset('img/featured-projects/thumbnail.jpeg');
     }
 }

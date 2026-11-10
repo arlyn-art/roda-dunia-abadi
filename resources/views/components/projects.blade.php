@@ -76,7 +76,7 @@
                         @if($item->project)
                             <div class="swiper-slide">
                                 <a href="{{ route('projects.show', $item->project->slug) }}" class="group relative block overflow-hidden">
-                                    <img src="{{ $item->project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/main-image.png') }}" 
+                                    <img src="{{ $item->project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/thumbnail.jpeg') }}" 
                                         alt="{{ $item->project->title }}" 
                                         class="w-full aspect-[4/3] object-cover">
                                         <span class="absolute inset-0 flex items-center justify-center text-center bg-black/80 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 font-bold px-6">

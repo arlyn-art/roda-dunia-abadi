@@ -111,7 +111,7 @@
                 >
                     <a href="{{ route('projects.show', $project->slug) }}" class="flex flex-col group cursor-pointer">
                         <div class="w-full aspect-[4/3] overflow-hidden mb-4 bg-black/40">
-                            <img src="{{ $project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/main-image.png') }}" alt="{{ $project->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <img src="{{ $project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/thumbnail.jpeg') }}" alt="{{ $project->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         </div>
                         <div class="sm:px-6 px-0">
                             <h3 class="text-sm xl:text-[1.2rem] 2xl:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->title }}</h3>

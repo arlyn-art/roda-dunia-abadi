@@ -46,7 +46,7 @@ class ShowProjects extends Component
 
         $projects->getCollection()->transform(function ($project) {
             $thumbnailMedia = $project->getFirstMediaUrl('thumbnail');
-            $project->thumbnail_url = $thumbnailMedia ?: asset('img/featured-projects/main-image.png');
+            $project->thumbnail_url = $thumbnailMedia ?: asset('img/featured-projects/thumbnail.jpeg');
             return $project;
         });
 

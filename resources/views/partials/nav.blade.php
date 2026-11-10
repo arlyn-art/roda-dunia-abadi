@@ -2,18 +2,28 @@
     x-data="{ 
         isScrolled: false, 
         isOpen: false,
+        // Cek apakah saat ini sedang di homepage (path murni '/')
+        isHome: {{ request()->is('/') ? 'true' : 'false' }},
         activeSection: 'home',
         init() {
-            // Cek hash saat pertama kali load
+            // Jika bukan di homepage, kosongkan activeSection agar Home tidak menyala
+            if (!this.isHome) {
+                this.activeSection = '';
+                return;
+            }
+
+            // Cek hash saat pertama kali load jika di homepage
             if (window.location.hash) {
                 this.activeSection = window.location.hash.replace('#', '');
             }
 
-            // Listener scroll untuk mendeteksi posisi section secara akurat
+            // Listener scroll khusus untuk halaman utama (homepage)
             window.addEventListener('scroll', () => {
+                if (!this.isHome) return;
+
                 let scrollY = window.pageYOffset;
 
-                // 1. Jika berada di paling atas (kurang dari 300px), paksa ke HOME
+                // 1. Jika berada di paling atas (kurang dari 300px), set ke HOME
                 if (scrollY < 300) {
                     this.activeSection = 'home';
                     return;
@@ -28,13 +38,13 @@
                 const servicesTop = servicesSec ? servicesSec.offsetTop - 150 : Infinity;
                 const servicesHeight = servicesSec ? servicesSec.offsetHeight : 0;
 
-                // 2. Jika scroll sudah melewati batas bawah section services, kembalikan ke HOME
+                // 2. Jika melewati batas bawah services, kembalikan ke HOME
                 if (servicesSec && scrollY >= (servicesTop + servicesHeight)) {
                     this.activeSection = 'home';
                     return;
                 }
 
-                // 3. Tentukan section mana yang sedang aktif berdasarkan posisi scroll
+                // 3. Tentukan section aktif
                 if (servicesSec && scrollY >= servicesTop) {
                     this.activeSection = 'services';
                 } else if (aboutSec && scrollY >= aboutTop) {

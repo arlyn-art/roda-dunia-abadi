@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="w-full h-[35vh] overflow-hidden mb-12 bg-black/40">
-    <img src="{{ $project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/main-image.png') }}" 
+    <img src="{{ $project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/thumbnail.jpeg') }}" 
          alt="{{ $project->title }}" 
          class="w-full h-full object-cover">
 </div>

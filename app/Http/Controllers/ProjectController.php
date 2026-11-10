@@ -31,7 +31,7 @@ class ProjectController extends Controller
         $images = [];
         
         $thumbnailMedia = $project->getFirstMediaUrl('thumbnail');
-        $images[] = $thumbnailMedia ?: asset('img/featured-projects/main-image.png');
+        $images[] = $thumbnailMedia ?: asset('img/featured-projects/thumbnail.jpeg');
 
         foreach ($project->getMedia('galeries') as $media) {
             $images[] = $media->getUrl();
