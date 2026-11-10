@@ -1,14 +1,63 @@
-<div x-data="{ isScrolled: false, isOpen: false }" @scroll.window="isScrolled = (window.pageYOffset > 50)" class="relative">
+<div 
+    x-data="{ 
+        isScrolled: false, 
+        isOpen: false,
+        activeSection: 'home',
+        init() {
+            // Cek hash saat pertama kali load
+            if (window.location.hash) {
+                this.activeSection = window.location.hash.replace('#', '');
+            }
+
+            // Listener scroll untuk mendeteksi posisi section secara akurat
+            window.addEventListener('scroll', () => {
+                let scrollY = window.pageYOffset;
+
+                // 1. Jika berada di paling atas (kurang dari 300px), paksa ke HOME
+                if (scrollY < 300) {
+                    this.activeSection = 'home';
+                    return;
+                }
+
+                const aboutSec = document.getElementById('about');
+                const servicesSec = document.getElementById('services');
+
+                if (!aboutSec && !servicesSec) return;
+
+                const aboutTop = aboutSec ? aboutSec.offsetTop - 150 : Infinity;
+                const servicesTop = servicesSec ? servicesSec.offsetTop - 150 : Infinity;
+                const servicesHeight = servicesSec ? servicesSec.offsetHeight : 0;
+
+                // 2. Jika scroll sudah melewati batas bawah section services, kembalikan ke HOME
+                if (servicesSec && scrollY >= (servicesTop + servicesHeight)) {
+                    this.activeSection = 'home';
+                    return;
+                }
+
+                // 3. Tentukan section mana yang sedang aktif berdasarkan posisi scroll
+                if (servicesSec && scrollY >= servicesTop) {
+                    this.activeSection = 'services';
+                } else if (aboutSec && scrollY >= aboutTop) {
+                    this.activeSection = 'about';
+                } else {
+                    this.activeSection = 'home';
+                }
+            });
+        }
+    }" 
+    @scroll.window="isScrolled = (window.pageYOffset > 50)" 
+    class="relative"
+>
     
     @php
         $navMenus = [
-            ['label' => 'HOME', 'url' => '/', 'pattern' => '/'],
-            ['label' => 'ABOUT US', 'url' => '/#about', 'pattern' => '*about*'],
-            ['label' => 'SERVICES', 'url' => '/#services', 'pattern' => '*services*'],
-            ['label' => 'PROJECTS', 'url' => '/projects', 'pattern' => 'projects*'],
-            ['label' => 'PARTNERS', 'url' => '/partners', 'pattern' => 'partners*'],
-            ['label' => 'NEWS', 'url' => '/news', 'pattern' => 'news*'],
-            ['label' => 'CONTACT US', 'url' => '/contact', 'pattern' => 'contact*'],
+            ['label' => 'HOME', 'url' => '/', 'id' => 'home', 'isRoute' => true],
+            ['label' => 'ABOUT US', 'url' => '/#about', 'id' => 'about', 'isRoute' => false],
+            ['label' => 'SERVICES', 'url' => '/#services', 'id' => 'services', 'isRoute' => false],
+            ['label' => 'PROJECTS', 'url' => '/projects', 'id' => 'projects', 'isRoute' => true],
+            ['label' => 'PARTNERS', 'url' => '/partners', 'id' => 'partners', 'isRoute' => true],
+            ['label' => 'NEWS', 'url' => '/news', 'id' => 'news', 'isRoute' => true],
+            ['label' => 'CONTACT US', 'url' => '/contact', 'id' => 'contact', 'isRoute' => true],
         ];
     @endphp
 
@@ -18,12 +67,7 @@
                 <div class="w-auto h-12 flex items-center justify-center">
                     <img src="/img/logo-red.png" alt="Logo" class="w-full h-full">
                 </div>
-                {{-- <div>
-                    <span class="block font-black text-2xl tracking-wide text-gray-900">PT RODA DUNIA ABADI</span>
-                    <span class="block text-sm font-semibold tracking-wider text-gray-600">SITEWORK CONTRACTOR</span>
-                </div> --}}
             </a>
-
             <div class="flex items-center space-x-3">
                 <div class="w-12 h-12 flex items-center justify-center">
                     <img src="/img/phone.png" class="w-full h-auto" alt="Phone">
@@ -45,12 +89,6 @@
             <a 
                 href="/"
                 x-show="isScrolled || window.innerWidth < 768" 
-                x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-200"
-                x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-95"
                 class="flex items-center space-x-2 py-2 xl:w-1/4 w-auto"
             >
                 <div class="w-auto h-10 xl:h-10 2xl:h-12 flex items-center justify-center">
@@ -58,14 +96,24 @@
                 </div>
             </a>
 
+            <!-- Desktop Menu -->
             <div class="hidden md:flex font-bold tracking-wide w-full transition-all duration-300" :class="isScrolled ? 'container mx-auto lg:justify-end justify-start 2xl:text-lg xl:text-[0.85rem] lg:text-[0.75rem] md:text-[0.55rem] text-black' : 'justify-start xl:text-lg lg:text-[0.85rem] md:text-[0.55rem] text-white'">
                 
                 @foreach($navMenus as $menu)
                     @php
-                        $isActive = request()->is($menu['pattern']);
+                        $routeCheck = $menu['isRoute'] && request()->is(ltrim($menu['url'], '/'));
                     @endphp
-                    <a href="{{ $menu['url'] }}" class="relative sm:px-6 px-0 sm:py-4 py-0 transition group {{ $isActive ? 'font-black' : 'hover:bg-secondary-hover' }}">
-                        <span class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 {{ $isActive ? 'bg-primary' : 'bg-transparent group-hover:bg-primary' }} transition-colors"></span>
+                    
+                    <a 
+                        href="{{ $menu['url'] }}" 
+                        @click="activeSection = '{{ $menu['id'] }}'"
+                        class="relative sm:px-6 px-0 sm:py-4 py-0 transition group"
+                        :class="( {{ $menu['isRoute'] ? ($routeCheck ? 'true' : 'false') : 'false' }} || activeSection === '{{ $menu['id'] }}' ) ? 'font-black' : 'hover:bg-secondary-hover'"
+                    >
+                        <span 
+                            class="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-1 transition-colors"
+                            :class="( {{ $menu['isRoute'] ? ($routeCheck ? 'true' : 'false') : 'false' }} || activeSection === '{{ $menu['id'] }}' ) ? 'bg-primary' : 'bg-transparent group-hover:bg-primary'"
+                        ></span>
                         <x-ui.nav tag="p">
                             {{ $menu['label'] }}
                         </x-ui.nav>
@@ -74,6 +122,7 @@
 
             </div>
 
+            <!-- Mobile Menu Toggle Button -->
             <div class="flex items-center md:hidden py-3">
                 <button @click="isOpen = !isOpen" class="text-black focus:outline-none p-2 rounded-lg hover:bg-secondary-hover cursor-pointer">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,22 +133,19 @@
             </div>
         </div>
 
+        <!-- Mobile Menu Dropdown -->
         <div 
             x-show="isOpen" 
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 -translate-y-2"
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 -translate-y-2"
             class="md:hidden bg-white/80 border-t border-gray-700 px-4 pt-2 pb-6 space-y-1 font-bold text-base"
             style="display: none;"
         >
             @foreach($navMenus as $menu)
-                @php
-                    $isActive = request()->is($menu['pattern']);
-                @endphp
-                <a href="{{ $menu['url'] }}" class="block px-4 py-3 rounded-lg {{ $isActive ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover' }} transition">
+                <a 
+                    href="{{ $menu['url'] }}" 
+                    @click="isOpen = false; activeSection = '{{ $menu['id'] }}'" 
+                    class="block px-4 py-3 rounded-lg transition"
+                    :class="activeSection === '{{ $menu['id'] }}' ? 'bg-gray-800 text-white border-l-4 border-primary' : 'text-black hover:bg-secondary-hover'"
+                >
                     {{ $menu['label'] }}
                 </a>
             @endforeach

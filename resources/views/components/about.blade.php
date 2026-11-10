@@ -48,7 +48,7 @@
         </div>
 
         <div class="mt-4 text-center">
-            <x-ui.paragraf tag="p" textColor="text-black">
+            <x-ui.paragraf tag="div" textColor="text-black" class="prose">
                 {!! $aboutDescription !!}
             </x-ui.paragraf>
         </div>
