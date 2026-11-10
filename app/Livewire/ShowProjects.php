@@ -39,7 +39,7 @@ class ShowProjects extends Component
         } elseif ($this->sort === 'latest') {
             $query->orderBy('years', 'desc')->orderBy('id', 'desc');
         } else {
-            $query->orderBy('id', 'desc');
+            $query->orderBy('title', 'asc')->orderBy('id', 'asc');
         }
 
         $projects = $query->paginate(6);
