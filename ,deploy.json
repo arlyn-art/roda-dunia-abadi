@@ -1,5 +1,5 @@
 {
-    "DPLOYPATH" : "/home/designcube3/demo_projects/rodadunia",
+    "DEPLOYPATH" : "/home/designcube3/demo_projects/rodadunia",
     "task" : [
         "app",
         "bootstrap",
