@@ -3,6 +3,7 @@
 @section('content')
     <x-hero :heroSection="$heroSection" :supportSection="$supportSection" />
     <x-about :aboutSection="$aboutSection" />
+    {{-- <x-about :aboutSection="$aboutSection" /> --}}
     <x-services :serviceSection="$serviceSection" />
     <x-featured-projects :featuredProjects="$featuredProjects" />
     <x-projects :homeProjects="$homeProjects" />
