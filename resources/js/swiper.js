@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.querySelector('.trusted-swiper')) {
         new Swiper('.trusted-swiper', {
             slidesPerView: 2,
-            spaceBetween: 24,
+            spaceBetween: 0,
             loop: true,
             navigation: {
                 nextEl: '.trusted-swiper-next',

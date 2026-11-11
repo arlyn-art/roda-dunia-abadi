@@ -40,7 +40,7 @@
                 <div class="lg:col-span-5 bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col">
                     <div class="w-full h-[260px] md:h-[380px] relative">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.0945763567493!2d106.7978189!3d-6.1158914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1f10bc132b49%3A0x6b198c2534a2e505!2sPT.%20Roda%20Dunia%20Abadi!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid" 
+                            src="{{ $mapsEmbedUrl }}" 
                             width="100%" 
                             height="100%" 
                             style="border:0;" 
@@ -57,11 +57,7 @@
                                 Head Office
                             </x-ui.title>
                             <p class="text-sm md:text-base leading-relaxed text-white/90">
-                                Jl. Muara baru Komplek Pergudangan<br>
-                                Blok A9-10 RT. 001 / 017,<br>
-                                Kel Penjaringan, Kec Penjaringan<br>
-                                Jakarta Utara 14440<br>
-                                INDONESIA
+                                {!! nl2br(e($address)) !!}
                             </p>
                         </div>
                     </div>

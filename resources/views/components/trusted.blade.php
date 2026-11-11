@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <div class="md:container w-full mx-auto md:gap-0 px-12 xl:px-12 2xl:px-0 pt-12">
+    <div class="md:container w-full mx-auto md:gap-0 px-12 xl:px-12 2xl:px-0">
         <div
             x-data="{
                 shown: false,
@@ -75,28 +75,27 @@
             <div class="swiper trusted-swiper">
                 <div class="swiper-wrapper">
                     @forelse($partners as $partner)
-                        <div class="swiper-slide flex items-center justify-center p-8">
-                            <img src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }} Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        <div class="swiper-slide flex items-center justify-center p-4">
+                            <img src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }} Logo" class="pointer-events-none select-none h-auto w-full object-contain" draggable="false">
                         </div>
                     @empty
-                        {{-- Fallback jika database partner masih kosong --}}
                         <div class="swiper-slide flex items-center justify-center p-8">
-                            <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                            <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 1 Logo" class="pointer-events-none select-none w-full h-auto object-contain" draggable="false">
                         </div>
                         <div class="swiper-slide flex items-center justify-center p-8">
-                            <img src="/img/trusted/trusted-2.png" alt="Trusted Partner 2 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                            <img src="/img/trusted/trusted-2.png" alt="Trusted Partner 2 Logo" class="pointer-events-none select-none w-full h-auto object-contain" draggable="false">
                         </div>
                         <div class="swiper-slide flex items-center justify-center p-8">
-                            <img src="/img/trusted/trusted-3.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                            <img src="/img/trusted/trusted-3.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-auto object-contain" draggable="false">
                         </div>
                         <div class="swiper-slide flex items-center justify-center p-8">
-                            <img src="/img/trusted/trusted-4.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                            <img src="/img/trusted/trusted-4.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-auto object-contain" draggable="false">
                         </div>
                         <div class="swiper-slide flex items-center justify-center p-8">
-                            <img src="/img/trusted/trusted-5.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                            <img src="/img/trusted/trusted-5.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-auto object-contain" draggable="false">
                         </div>
                         <div class="swiper-slide flex items-center justify-center p-8">
-                            <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                            <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-auto object-contain" draggable="false">
                         </div>
                     @endforelse
                 </div>

@@ -3,9 +3,6 @@
         $footerSetting = \App\Models\Settings::where('group', 'global')->where('subgroup', 'footer')->first();
         $footer = $footerSetting->payload ?? [];
 
-        $contactSetting = \App\Models\Settings::where('group', 'global')->where('subgroup', 'contact')->first();
-        $contact = $contactSetting->payload ?? [];
-
         $socialSetting = \App\Models\Settings::where('group', 'global')->where('subgroup', 'social')->first();
         $socialItems = $socialSetting->payload['items'] ?? [];
     @endphp
@@ -29,11 +26,11 @@
 
             <div class="leading-relaxed">
                 <x-ui.paragraf tag="p" textColor="text-white">
-                    {{ $footer['company_description'] ?? 'PT. Roda Dunia Abadi mengerjakan konstruksi jalan raya dan jalan lingkungan, pengerukan dan pengurugan, irigasi dan drainase serta penggalian dan pemindahan tanah.' }}
+                    {{ !empty($footer['company_description']) ? $footer['company_description'] : 'PT. Roda Dunia Abadi mengerjakan konstruksi jalan raya dan jalan lingkungan, pengerukan dan pengurugan, irigasi dan drainase serta penggalian dan pemindahan tanah.' }}
                 </x-ui.paragraf>
             </div>
 
-            {{-- Sosial Media (hanya tampil jika diisi di admin panel) --}}
+            {{-- Bagian Sosmed biarkan tetap seperti semula --}}
             @if(!empty($socialItems))
                 <div class="flex items-center space-x-4">
                     @foreach($socialItems as $social)
@@ -74,7 +71,11 @@
             </x-ui.title>
             <div class="leading-relaxed">
                 <x-ui.paragraf tag="p" textColor="text-white">
-                    {!! nl2br(e($contact['address'] ?? "Jl. Muara baru Komplek Pergudangan\nBlok A9-10 RT. 001 / 017,\nKel Penjaringan, Kec Penjaringan\nJakarta Utara 14440\nINDONESIA")) !!}
+                    @php
+                        $defaultAddress = "Jl. Muara baru Komplek Pergudangan\nBlok A9-10 RT. 001 / 017,\nKel Penjaringan, Kec Penjaringan\nJakarta Utara 14440\nINDONESIA";
+                        $addressToDisplay = !empty($footer['address']) ? $footer['address'] : $defaultAddress;
+                    @endphp
+                    {!! nl2br(e($addressToDisplay)) !!}
                 </x-ui.paragraf>
             </div>
         </div>
