@@ -27,32 +27,27 @@
                     @mouseleave="open = false" 
                     class="relative w-auto shrink-0"
                 >
-                    <span 
-                        class="pointer-events-none absolute left-1 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white transition-all duration-300 ease-out"
-                        :class="open ? 'opacity-100 translate-x-2' : 'opacity-0 -translate-x-3'"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </span>
-
                     <button 
                         type="button"
-                        class="flex items-center justify-between w-full sm:w-44 rounded-lg bg-black py-4 px-4 font-semibold text-white transition-all duration-300 focus:outline-none cursor-pointer pl-8 sm:pl-12"
-                        :class="open ? 'pl-12' : ''"
+                        class="flex items-center justify-between w-auto rounded-lg bg-black py-4 px-8 font-semibold text-white transition-all duration-300 focus:outline-none cursor-pointer"
                     >
-                        <span>
-                            @if($sort === 'latest')
-                                Latest
-                            @elseif($sort === 'oldest')
-                                Oldest
-                            @else
-                                Sort By
-                            @endif
-                        </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300" :class="open ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7"/>
-                        </svg>
+                        <div class="flex items-center gap-x-2">
+                            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300" :class="open ? 'rotate-90' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+
+                            <span>
+                                @if($sort === 'latest')
+                                    Latest
+                                @elseif($sort === 'oldest')
+                                    Oldest
+                                @else
+                                    Sort By
+                                @endif
+                            </span>
+                        </div>
                     </button>
 
                     <div 
@@ -66,12 +61,21 @@
                         style="display: none;"
                         class="absolute right-0 left-0 mt-2 z-20 rounded-lg bg-black shadow-lg overflow-hidden border border-gray-800"
                     >
-                        <div class="flex flex-col py-1">
+                        <div class="flex flex-col py-1 text-center">
+                            <button
+                                type="button"
+                                wire:click="$set('sort', '')"
+                                @click="open = false"
+                                class="px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-primary transition-colors cursor-pointer {{ empty($sort) ? 'bg-primary/50 text-white font-bold' : '' }}"
+                            >
+                                Default
+                            </button>
+
                             <button
                                 type="button"
                                 wire:click="$set('sort', 'latest')"
                                 @click="open = false"
-                                class="text-left px-4 py-3 text-sm text-white hover:bg-primary transition-colors cursor-pointer {{ $sort === 'latest' ? 'bg-primary/50 font-bold' : '' }}"
+                                class="px-4 py-3 text-sm text-white hover:bg-primary transition-colors cursor-pointer {{ $sort === 'latest' ? 'bg-primary/50 font-bold' : '' }}"
                             >
                                 Latest
                             </button>
@@ -80,17 +84,17 @@
                                 type="button"
                                 wire:click="$set('sort', 'oldest')"
                                 @click="open = false"
-                                class="text-left px-4 py-3 text-sm text-white hover:bg-primary transition-colors cursor-pointer {{ $sort === 'oldest' ? 'bg-primary/50 font-bold' : '' }}"
+                                class="px-4 py-3 text-sm text-white hover:bg-primary transition-colors cursor-pointer {{ $sort === 'oldest' ? 'bg-primary/50 font-bold' : '' }}"
                             >
                                 Oldest
                             </button>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
+        <!-- Grid Projects -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($projects as $index => $project)
                 <div 
@@ -111,7 +115,7 @@
                 >
                     <a href="{{ route('projects.show', $project->slug) }}" class="flex flex-col group cursor-pointer">
                         <div class="w-full aspect-[4/3] overflow-hidden mb-4 bg-black/40">
-                            <img src="{{ $project->getFirstMediaUrl('thumbnail') ?: asset('img/featured-projects/thumbnail.jpeg') }}" alt="{{ $project->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <img src="{{ $project->thumbnail_url }}" alt="{{ $project->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         </div>
                         <div class="sm:px-6 px-0">
                             <h3 class="text-sm xl:text-[1.2rem] 2xl:text-xl font-bold text-black mb-1 group-hover:text-primary transition">{{ $project->title }}</h3>
@@ -134,6 +138,5 @@
         <div class="mt-12 flex justify-center">
             {{ $projects->links('vendor.pagination.custom') }}
         </div>
-
     </div>
 </div>

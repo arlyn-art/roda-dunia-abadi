@@ -216,11 +216,64 @@ class Settings extends Page
             ->schema([
                 Tabs::make('SettingsTabs')
                     ->tabs([
+                        $this->globalTab(),
                         $this->homeTab(),
                         $this->projectsTab(),
                         $this->partnersTab(),
                         $this->newsTab(),
                         $this->contactTab(),
+                    ]),
+            ]);
+    }       
+
+    protected function globalTab(): Tab
+    {
+        return Tab::make('Global')
+            ->schema([
+                Tabs::make('GlobalSubTabs')
+                    ->tabs([
+                        Tab::make('Footer & Address')
+                            ->schema([
+                                Textarea::make('global.footer.company_description')
+                                    ->label('Footer Description')
+                                    ->rows(3),
+
+                                Textarea::make('global.footer.address')
+                                    ->label('Head Office Address')
+                                    ->rows(4),
+
+                                Textarea::make('global.contact.maps_embed_url')
+                                    ->label('Google Maps Embed URL (Iframe Src)')
+                                    ->rows(3),
+                            ])
+                            ->columns(1),
+
+                        Tab::make('Social Media')
+                            ->schema([
+                                Repeater::make('global.social.items')
+                                    ->label('Social Media Links')
+                                    ->schema([
+                                        \Filament\Forms\Components\Select::make('platform')
+                                            ->label('Platform')
+                                            ->options([
+                                                'instagram' => 'Instagram',
+                                                'youtube' => 'YouTube',
+                                                'linkedin' => 'LinkedIn',
+                                                'facebook' => 'Facebook',
+                                                'tiktok' => 'TikTok',
+                                                'twitter' => 'X (Twitter)',
+                                            ])
+                                            ->required(),
+
+                                        TextInput::make('url')
+                                            ->label('Profile URL')
+                                            ->url()
+                                            ->required(),
+                                    ])
+                                    ->columns(2)
+                                    ->addActionLabel('Tambah Sosmed')
+                                    ->collapsible(),
+                            ])
                     ]),
             ]);
     }

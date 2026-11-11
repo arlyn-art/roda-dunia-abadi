@@ -130,7 +130,7 @@
                                                                 PEKERJAAN
                                                             </x-ui.paragraf>
                                                         </div>
-                                                        <x-ui.paragraf tag="p" textColor="text-white" class="font-medium">
+                                                        <x-ui.paragraf tag="div" textColor="text-white" class="prose font-medium">
                                                             {!! $project->working !!}
                                                         </x-ui.paragraf>
                                                     </div>
@@ -140,7 +140,7 @@
                                             <div class="text-white text-sm md:text-base space-y-4 md:col-span-2">
                                                 @if($project->description)
                                                     <div class="prose prose-invert max-w-none tiptap-content">
-                                                        <x-ui.paragraf tag="p" textColor="text-white" class="font-medium">
+                                                        <x-ui.paragraf tag="div" textColor="text-white" class="prose font-medium">
                                                             {!! $project->description !!}
                                                         </x-ui.paragraf>
                                                     </div>
@@ -153,7 +153,7 @@
                         @endif
                     @empty
                         <div class="swiper-slide px-6 text-center py-12 text-white/70">
-                            <p class="text-lg">Belum ada Featured Projects yang diatur.</p>
+                            <p class="text-lg">Belum ada Featured Projects.</p>
                         </div>
                     @endforelse
                 </div>

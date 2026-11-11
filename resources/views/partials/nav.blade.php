@@ -2,28 +2,31 @@
     x-data="{ 
         isScrolled: false, 
         isOpen: false,
-        // Cek apakah saat ini sedang di homepage (path murni '/')
         isHome: {{ request()->is('/') ? 'true' : 'false' }},
         activeSection: 'home',
         init() {
-            // Jika bukan di homepage, kosongkan activeSection agar Home tidak menyala
+            // Watch perubahan isOpen untuk mengunci/membuka scroll body
+            this.$watch('isOpen', value => {
+                if (value) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
             if (!this.isHome) {
                 this.activeSection = '';
                 return;
             }
 
-            // Cek hash saat pertama kali load jika di homepage
             if (window.location.hash) {
                 this.activeSection = window.location.hash.replace('#', '');
             }
 
-            // Listener scroll khusus untuk halaman utama (homepage)
             window.addEventListener('scroll', () => {
                 if (!this.isHome) return;
-
                 let scrollY = window.pageYOffset;
 
-                // 1. Jika berada di paling atas (kurang dari 300px), set ke HOME
                 if (scrollY < 300) {
                     this.activeSection = 'home';
                     return;
@@ -38,13 +41,11 @@
                 const servicesTop = servicesSec ? servicesSec.offsetTop - 150 : Infinity;
                 const servicesHeight = servicesSec ? servicesSec.offsetHeight : 0;
 
-                // 2. Jika melewati batas bawah services, kembalikan ke HOME
                 if (servicesSec && scrollY >= (servicesTop + servicesHeight)) {
                     this.activeSection = 'home';
                     return;
                 }
 
-                // 3. Tentukan section aktif
                 if (servicesSec && scrollY >= servicesTop) {
                     this.activeSection = 'services';
                 } else if (aboutSec && scrollY >= aboutTop) {
@@ -106,7 +107,6 @@
                 </div>
             </a>
 
-            <!-- Desktop Menu -->
             <div class="hidden md:flex font-bold tracking-wide w-full transition-all duration-300" :class="isScrolled ? 'container mx-auto lg:justify-end justify-start 2xl:text-lg xl:text-[0.85rem] lg:text-[0.75rem] md:text-[0.55rem] text-black' : 'justify-start xl:text-lg lg:text-[0.85rem] md:text-[0.55rem] text-white'">
                 
                 @foreach($navMenus as $menu)
@@ -132,7 +132,6 @@
 
             </div>
 
-            <!-- Mobile Menu Toggle Button -->
             <div class="flex items-center md:hidden py-3">
                 <button @click="isOpen = !isOpen" class="text-black focus:outline-none p-2 rounded-lg hover:bg-secondary-hover cursor-pointer">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,10 +142,10 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
         <div 
             x-show="isOpen" 
-            class="md:hidden bg-white/80 border-t border-gray-700 px-4 pt-2 pb-6 space-y-1 font-bold text-base"
+            @click.outside="isOpen = false"
+            class="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 pt-2 pb-6 space-y-1 font-bold text-base shadow-xl"
             style="display: none;"
         >
             @foreach($navMenus as $menu)
