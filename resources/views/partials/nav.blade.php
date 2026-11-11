@@ -62,13 +62,13 @@
     
     @php
         $navMenus = [
-            ['label' => 'HOME', 'url' => '/', 'id' => 'home', 'isRoute' => true],
-            ['label' => 'ABOUT US', 'url' => '/#about', 'id' => 'about', 'isRoute' => false],
-            ['label' => 'SERVICES', 'url' => '/#services', 'id' => 'services', 'isRoute' => false],
-            ['label' => 'PROJECTS', 'url' => '/projects', 'id' => 'projects', 'isRoute' => true],
-            ['label' => 'PARTNERS', 'url' => '/partners', 'id' => 'partners', 'isRoute' => true],
-            ['label' => 'NEWS', 'url' => '/news', 'id' => 'news', 'isRoute' => true],
-            ['label' => 'CONTACT US', 'url' => '/contact', 'id' => 'contact', 'isRoute' => true],
+            ['label' => 'HOME', 'url' => route('home'), 'id' => 'home', 'isRoute' => true],
+            ['label' => 'ABOUT US', 'url' => route('home') . '#about', 'id' => 'about', 'isRoute' => false],
+            ['label' => 'SERVICES', 'url' => route('home') . '#services', 'id' => 'services', 'isRoute' => false],
+            ['label' => 'PROJECTS', 'url' => route('projects'), 'id' => 'projects', 'isRoute' => true],
+            ['label' => 'PARTNERS', 'url' => route('partners.index'), 'id' => 'partners', 'isRoute' => true],
+            ['label' => 'NEWS', 'url' => route('news'), 'id' => 'news', 'isRoute' => true],
+            ['label' => 'CONTACT US', 'url' => route('contact'), 'id' => 'contact', 'isRoute' => true],
         ];
     @endphp
 

@@ -1,3 +1,5 @@
+@props(['partners' => []])
+
 <section class="md:py-20 py-12 bg-white text-black">
     <div class="w-full">
         <div class="md:container w-full mx-auto flex flex-row items-center justify-between gap-6 md:gap-0 pb-8 px-6 xl:px-12 2xl:px-0">
@@ -42,11 +44,10 @@
                 class="justify-end transition-all duration-700 ease-out delay-150"
                 :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
             >
-                <x-ui.button href="/partners" variant="primary" class="ml-auto">
-                    
+                <x-ui.button href="{{ route('partners.index') }}" variant="primary" class="ml-auto">
                     <x-ui.paragraf tag="p" textColor="text-white">
-                            See All Partners
-                        </x-ui.paragraf>
+                        See All Partners
+                    </x-ui.paragraf>
                 </x-ui.button>
             </div>
         </div>
@@ -73,29 +74,31 @@
         >
             <div class="swiper trusted-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide flex items-center justify-center p-8">
-                        <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
-                    </div>
-
-                    <div class="swiper-slide flex items-center justify-center p-8">
-                        <img src="/img/trusted/trusted-2.png" alt="Trusted Partner 2 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
-                    </div>
-
-                    <div class="swiper-slide flex items-center justify-center p-8">
-                        <img src="/img/trusted/trusted-3.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
-                    </div>
-
-                    <div class="swiper-slide flex items-center justify-center p-8">
-                        <img src="/img/trusted/trusted-4.png" alt="Trusted Partner 4 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
-                    </div>
-
-                    <div class="swiper-slide flex items-center justify-center p-8">
-                        <img src="/img/trusted/trusted-5.png" alt="Trusted Partner 5 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
-                    </div>
-
-                    <div class="swiper-slide flex items-center justify-center p-8">
-                        <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
-                    </div>
+                    @forelse($partners as $partner)
+                        <div class="swiper-slide flex items-center justify-center p-8">
+                            <img src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }} Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        </div>
+                    @empty
+                        {{-- Fallback jika database partner masih kosong --}}
+                        <div class="swiper-slide flex items-center justify-center p-8">
+                            <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 1 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        </div>
+                        <div class="swiper-slide flex items-center justify-center p-8">
+                            <img src="/img/trusted/trusted-2.png" alt="Trusted Partner 2 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        </div>
+                        <div class="swiper-slide flex items-center justify-center p-8">
+                            <img src="/img/trusted/trusted-3.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        </div>
+                        <div class="swiper-slide flex items-center justify-center p-8">
+                            <img src="/img/trusted/trusted-4.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        </div>
+                        <div class="swiper-slide flex items-center justify-center p-8">
+                            <img src="/img/trusted/trusted-5.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        </div>
+                        <div class="swiper-slide flex items-center justify-center p-8">
+                            <img src="/img/trusted/trusted-1.png" alt="Trusted Partner 3 Logo" class="pointer-events-none select-none w-full h-20 md:h-24 object-contain" draggable="false">
+                        </div>
+                    @endforelse
                 </div>
             </div>
 

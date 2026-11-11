@@ -42,7 +42,7 @@
                 class="justify-end transition-all duration-700 ease-out delay-150"
                 :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
             >
-                <x-ui.button href="/projects" variant="black" class="ml-auto">
+                <x-ui.button href="{{ route('projects') }}" variant="black" class="ml-auto">
                     <x-ui.paragraf tag="p" textColor="text-white">
                         See All Projects
                     </x-ui.paragraf>

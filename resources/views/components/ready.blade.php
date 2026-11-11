@@ -81,7 +81,7 @@
                     <div class="mt-8">
                         <x-ui.button
                             variant="black"
-                            href="/contact"
+                            href="{{ route('contact') }}"
                         >   
                             <x-ui.paragraf tag="p" textColor="text-white">
                                 FREE CONSULTATION

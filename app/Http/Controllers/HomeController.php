@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeNews;
 use App\Models\HomeProject;
+use App\Models\Partners;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 
@@ -64,6 +65,10 @@ class HomeController extends Controller
             ->take(9)
             ->get();
 
-        return view('home', compact('title','homeProjects', 'featuredProjects', 'homeNews', 'meta', 'heroSection', 'supportSection', 'aboutSection', 'serviceSection', 'readySection'));
+        $partners = Partners::where('is_active', true)
+            ->latest()
+            ->get();
+
+        return view('home', compact('title','homeProjects', 'featuredProjects', 'homeNews', 'meta', 'heroSection', 'supportSection', 'aboutSection', 'serviceSection', 'readySection', 'partners'));
     }
 }
