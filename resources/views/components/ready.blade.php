@@ -18,6 +18,7 @@
         ? asset('storage/' . $readySection['ready_media']) 
         : asset('img/people.png');
 @endphp
+
 <section class="relative bg-primary"
      x-data="{ 
         shown: false,
@@ -41,12 +42,9 @@
 
         <div class="relative flex flex-col-reverse lg:block">
             
-            <div class="pointer-events-none relative z-20 mt-8 md:mt-0 w-[100%] translate-x-0 lg:absolute lg:bottom-0 right-0 lg:right-[-4rem] xl:right-[-4rem] 2xl:right-0 w-[100%] lg:max-w-[660px] xl:max-w-[720px] 2xl:max-w-[780px] lg:translate-x-0 transition-all duration-1000 ease-out"
-                 x-show="shown"
-                 x-transition:enter="transition ease-out duration-1000"
-                 x-transition:enter-start="opacity-0"
-                 x-transition:enter-end="opacity-100"
-                 style="display: none;">
+            <!-- Gambar Consultant (Posisi absolute & class asli dipertahankan, tanpa overflow-hidden jadi tidak terpotong) -->
+            <div class="pointer-events-none relative z-20 mt-8 md:mt-0 w-[100%] translate-x-0 lg:absolute lg:bottom-0 right-0 lg:right-[-4rem] xl:right-[-4rem] 2xl:right-0 lg:max-w-[660px] xl:max-w-[720px] 2xl:max-w-[780px] lg:translate-x-0 transition-all duration-1000 ease-out"
+                 :class="shown ? 'opacity-100' : 'opacity-0'">
                 <img
                     src="{{ $readyMedia }}"
                     alt="Professional Consultant"
@@ -54,12 +52,9 @@
                 >
             </div>
 
+            <!-- Konten Teks & Tombol -->
             <div class="relative z-10 flex w-full items-center py-12 lg:min-h-[700px] lg:w-[46%] lg:py-24 transition-all duration-1000 ease-out"
-                 x-show="shown"
-                 x-transition:enter="transition ease-out duration-1000"
-                 x-transition:enter-start="opacity-0 -translate-x-12"
-                 x-transition:enter-end="opacity-100 translate-x-0"
-                 style="display: none;">
+                 :class="shown ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'">
                 
                 <div class="max-w-2xl">
                     <x-ui.title tag="h1" lineColor="none" textColor="text-white" class="leading-[1.05] font-medium tracking-tight">
@@ -82,7 +77,7 @@
                         <x-ui.button
                             variant="black"
                             href="{{ route('contact') }}"
-                        >   
+                        > 
                             <x-ui.paragraf tag="p" textColor="text-white">
                                 FREE CONSULTATION
                             </x-ui.paragraf>

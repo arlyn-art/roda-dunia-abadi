@@ -1,47 +1,4 @@
-<section class="relative w-full aspect-video max-h-[75vh] mx-auto md:mb-16 sm:mb-12 mb-6"
-     x-data="{ 
-        shown: false,
-        @foreach($supportSection as $index => $item)
-            count{{ $index + 1 }}: 0,
-        @endforeach
-        runAnimation() {
-            this.shown = true;
-            @foreach($supportSection as $index => $item)
-                this.count{{ $index + 1 }} = 0;
-                let target{{ $index + 1 }} = {{ $item['support_counting'] ?? 0 }};
-                let step{{ $index + 1 }} = target{{ $index + 1 }} > 50 ? Math.ceil(target{{ $index + 1 }} / 50) : 1;
-                let int{{ $index + 1 }} = setInterval(() => { 
-                    if(this.count{{ $index + 1 }} < target{{ $index + 1 }}) {
-                        this.count{{ $index + 1 }} += step{{ $index + 1 }};
-                        if(this.count{{ $index + 1 }} > target{{ $index + 1 }}) {
-                            this.count{{ $index + 1 }} = target{{ $index + 1 }};
-                        }
-                    } else { 
-                        clearInterval(int{{ $index + 1 }}); 
-                    } 
-                }, 40);
-            @endforeach
-        },
-        resetAnimation() {
-            this.shown = false;
-            @foreach($supportSection as $index => $item)
-                this.count{{ $index + 1 }} = 0;
-            @endforeach
-        }
-     }"
-     x-init="
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    runAnimation();
-                } else {
-                    resetAnimation();
-                }
-            });
-        }, { threshold: 0.3 });
-        observer.observe($el);
-     ">
-    
+<section class="relative w-full aspect-video max-h-[75vh] mx-auto md:mb-16 sm:mb-12 mb-6">
     <div class="swiper hero-swiper w-full h-full">
         <div class="swiper-wrapper">
             @php
@@ -94,12 +51,48 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="absolute bottom-[-3rem] sm:bottom-[-7rem] left-1/2 transform -translate-x-1/2 z-20 w-[90%] max-w-6xl bg-primary text-white rounded-tl-4xl rounded-br-4xl shadow-2xl py-4 px-4 sm:px-12 sm:py-12 transition-all duration-1000 ease-out"
-        x-show="shown"
-        x-transition:enter="transition ease-out duration-1000"
-        x-transition:enter-start="opacity-0 translate-y-10"
-        x-transition:enter-end="opacity-100 translate-y-0"
-        style="display: none;"> 
+    <div class="absolute bottom-[-3rem] sm:bottom-[-7rem] left-1/2 transform -translate-x-1/2 z-20 w-[90%] max-w-6xl bg-primary text-white rounded-tl-4xl rounded-br-4xl shadow-2xl py-4 px-4 sm:px-12 sm:py-12"
+         x-data="{ 
+            @foreach($supportSection as $index => $item)
+                count{{ $index + 1 }}: 0,
+            @endforeach
+            runAnimation() {
+                @foreach($supportSection as $index => $item)
+                    this.count{{ $index + 1 }} = 0;
+                    let target{{ $index + 1 }} = {{ $item['support_counting'] ?? 0 }};
+                    let step{{ $index + 1 }} = target{{ $index + 1 }} > 50 ? Math.ceil(target{{ $index + 1 }} / 50) : 1;
+                    let int{{ $index + 1 }} = setInterval(() => { 
+                        if(this.count{{ $index + 1 }} < target{{ $index + 1 }}) {
+                            this.count{{ $index + 1 }} += step{{ $index + 1 }};
+                            if(this.count{{ $index + 1 }} > target{{ $index + 1 }}) {
+                                this.count{{ $index + 1 }} = target{{ $index + 1 }};
+                            }
+                        } else { 
+                            clearInterval(int{{ $index + 1 }}); 
+                        } 
+                    }, 40);
+                @endforeach
+            },
+            resetAnimation() {
+                @foreach($supportSection as $index => $item)
+                    this.count{{ $index + 1 }} = 0;
+                @endforeach
+            }
+         }"
+         x-init="
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        runAnimation(); // Jalan setiap kali card masuk layar
+                    } else {
+                        resetAnimation(); // Reset ke 0 pas card benar-benar keluar layar
+                    }
+                });
+            }, { 
+                threshold: 0.1 
+            });
+            observer.observe($el);
+         ">
             
         <div class="grid grid-cols-3 gap-6 justify-center items-center">
             @foreach($supportSection as $index => $item)

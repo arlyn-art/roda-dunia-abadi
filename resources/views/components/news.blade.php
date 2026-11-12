@@ -1,14 +1,15 @@
 <section id="services" class="md:py-20 py-12 px-6 bg-secondary">
     <div class="w-full md:container mx-auto px-6 xl:px-12 2xl:px-0">
         <div x-data="{ shown: false }" 
-             x-init="
+            x-init="
                 const observer = new IntersectionObserver(([entry]) => {
                     shown = entry.isIntersecting;
-                }, { threshold: 0.15 });
+                }, { threshold: 0 });
+
                 observer.observe($el);
-             "
-             class="transition-all duration-700 ease-out pb-8"
-             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
+            "
+            class="transition-all duration-700 ease-out pb-8"
+            :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
             <x-ui.title tag="h2" lineColor="primary" textColor="text-white" class="font-medium">
                 Company News
             </x-ui.title>
@@ -21,7 +22,7 @@
                 init() {
                     this.observer = new IntersectionObserver(([entry]) => {
                         this.shown = entry.isIntersecting;
-                    }, { threshold: 0.15 });
+                    }, { threshold: 0 });
 
                     this.observer.observe(this.$el);
                 },
