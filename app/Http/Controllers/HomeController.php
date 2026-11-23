@@ -66,7 +66,7 @@ class HomeController extends Controller
             ->get();
 
         $partners = Partners::where('is_active', true)
-            ->latest()
+            ->oldest()
             ->get();
 
         return view('home', compact('title','homeProjects', 'featuredProjects', 'homeNews', 'meta', 'heroSection', 'supportSection', 'aboutSection', 'serviceSection', 'readySection', 'partners'));
